@@ -1,4 +1,10 @@
 {
   "item.testmod.troll": "Troll",
-  "item.testmod.smiley": "Smiley"
+  "item.testmod.smiley": "Smiley",
+
+  "block.testmod.troll_block": "Troll Block",
+  "block.testmod.smiley_ore": "Smiley Ore",
+
+  "creativetab.testmod.troll_items": "Troll Items",
+  "creativetab.testmod.troll_blocks": "Troll Blocks"
 }

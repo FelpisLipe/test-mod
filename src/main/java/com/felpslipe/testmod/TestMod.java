@@ -1,5 +1,7 @@
 package com.felpslipe.testmod;
 
+import com.felpslipe.testmod.block.ModBlocks;
+import com.felpslipe.testmod.item.ModCreativeModeTabs;
 import com.felpslipe.testmod.item.ModItems;
 import net.minecraft.world.item.CreativeModeTabs;
 import org.slf4j.Logger;
@@ -38,8 +40,14 @@ public class TestMod {
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
 
+        // Calling creative mode tabs register
+        ModCreativeModeTabs.register(modEventBus);
+
         // Calling item register
         ModItems.register(modEventBus);
+
+        // Calling block register
+        ModBlocks.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -54,10 +62,20 @@ public class TestMod {
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
+        // Adding items to creative mode tab Ingredients
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            // Adding item (troll) to creative mode tab Ingredients
             event.accept(ModItems.TROLL);
             event.accept(ModItems.SMILEY);
+        }
+
+        // Adding blocks to creative mode tab Building Blocks
+        if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+            event.accept(ModBlocks.TROLL_BLOCK);
+        }
+
+        // Adding blocks to creative mode tab Natural Blocks
+        if(event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
+            event.accept(ModBlocks.SMILEY_ORE);
         }
     }
 
