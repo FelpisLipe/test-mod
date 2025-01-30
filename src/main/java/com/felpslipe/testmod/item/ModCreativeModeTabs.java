@@ -23,6 +23,7 @@ public class ModCreativeModeTabs {
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.TROLL);
                         output.accept(ModItems.SMILEY);
+                        output.accept(ModItems.THIRTY);
                     })
                     .build());
 
