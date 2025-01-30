@@ -38,6 +38,7 @@ public class ShadyBlock extends Block {
                 level.addParticle(
                         ParticleTypes.EXPLOSION, (double)pos.getX() + 0.5, (double)pos.getY() + 1.2, (double)pos.getZ() + 0.5, (double)24 / 24.0, 0.0, 0.0
                 );
+                level.playSound(entity, pos, SoundEvents.GENERIC_EXPLODE.value(), SoundSource.BLOCKS, 1f, 2f);
             }
         }
         if (!entity.isSteppingCarefully() && entity instanceof LivingEntity) {
