@@ -36,6 +36,7 @@ public class ModCreativeModeTabs {
                     .displayItems((parameters, output) -> {
                         output.accept(ModBlocks.TROLL_BLOCK);
                         output.accept(ModBlocks.SMILEY_ORE);
+                        output.accept(ModBlocks.SHADY_BLOCK);
                     })
                     .build());
 

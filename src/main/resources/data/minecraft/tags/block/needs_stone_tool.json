@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "testmod:troll_block"
+    "testmod:troll_block",
+    "testmod:shady_block"
   ]
 }

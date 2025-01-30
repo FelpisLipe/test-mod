@@ -1,6 +1,7 @@
 package com.felpslipe.testmod.block;
 
 import com.felpslipe.testmod.TestMod;
+import com.felpslipe.testmod.block.custom.ShadyBlock;
 import com.felpslipe.testmod.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -31,6 +32,9 @@ public class ModBlocks {
                             .strength(3f)
                             .requiresCorrectToolForDrops()
                             .sound(SoundType.STONE)));
+
+    public static final DeferredBlock<Block> SHADY_BLOCK = registerBlock("shady_block",
+            () -> new ShadyBlock(BlockBehaviour.Properties.of().strength(2f)));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
