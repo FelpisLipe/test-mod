@@ -2,6 +2,7 @@ package com.felpslipe.testmod.block.custom;
 
 import com.felpslipe.testmod.item.ModItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
@@ -34,6 +35,9 @@ public class ShadyBlock extends Block {
         if(entity instanceof ItemEntity itemEntity) {
             if(itemEntity.getItem().getItem() == ModItems.SMILEY.get()) {
                 itemEntity.setItem(new ItemStack(ModItems.TROLL.get(), itemEntity.getItem().getCount()));
+                level.addParticle(
+                        ParticleTypes.EXPLOSION, (double)pos.getX() + 0.5, (double)pos.getY() + 1.2, (double)pos.getZ() + 0.5, (double)24 / 24.0, 0.0, 0.0
+                );
             }
         }
         if (!entity.isSteppingCarefully() && entity instanceof LivingEntity) {
