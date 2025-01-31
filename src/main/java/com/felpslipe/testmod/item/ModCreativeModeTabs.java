@@ -25,6 +25,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SMILEY);
                         output.accept(ModItems.THIRTY);
                         output.accept(ModItems.FRANGO);
+                        output.accept(ModItems.HOT_BREATH);
+                        output.accept(ModItems.HOT_CHEETO);
                     })
                     .build());
 

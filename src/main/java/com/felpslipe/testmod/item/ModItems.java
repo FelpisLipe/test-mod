@@ -22,6 +22,11 @@ public class ModItems {
     public static final DeferredItem<Item> FRANGO = ITEMS.register("frango",
             () -> new Item(new Item.Properties().food(ModFoodProperties.FRANGO)));
 
+    public static final DeferredItem<Item> HOT_BREATH = ITEMS.register("hot_breath",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> HOT_CHEETO = ITEMS.register("hot_cheeto",
+            () -> new Item(new Item.Properties()));
+
     // Registering items
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
