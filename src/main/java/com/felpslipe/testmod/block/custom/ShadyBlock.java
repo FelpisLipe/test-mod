@@ -1,6 +1,7 @@
 package com.felpslipe.testmod.block.custom;
 
 import com.felpslipe.testmod.item.ModItems;
+import com.felpslipe.testmod.util.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
@@ -33,7 +34,7 @@ public class ShadyBlock extends Block {
     @Override
     public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
         if(entity instanceof ItemEntity itemEntity) {
-            if(itemEntity.getItem().getItem() == ModItems.SMILEY.get()) {
+            if(isValidItem(itemEntity.getItem())) {
                 itemEntity.setItem(new ItemStack(ModItems.TROLL.get(), itemEntity.getItem().getCount()));
                 level.addParticle(
                         ParticleTypes.EXPLOSION, (double)pos.getX() + 0.5, (double)pos.getY() + 1.2, (double)pos.getZ() + 0.5, (double)24 / 24.0, 0.0, 0.0
@@ -44,6 +45,11 @@ public class ShadyBlock extends Block {
         if (!entity.isSteppingCarefully() && entity instanceof LivingEntity) {
             entity.hurt(level.damageSources().dryOut(), 1.0F);
         }
+    }
+
+    // checking tag
+    private boolean isValidItem(ItemStack item) {
+        return item.is(ModTags.Items.RATTABLE_ITEMS);
     }
 
     @Override
