@@ -28,6 +28,13 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.TROLL_BLOCK.get())
                 .add(ModBlocks.SHADY_BLOCK.get());
+
+        tag(BlockTags.FENCES)
+                .add(ModBlocks.TROLL_FENCE.get());
+        tag(BlockTags.FENCE_GATES)
+                .add(ModBlocks.TROLL_FENCE_GATE.get());
+        tag(BlockTags.WALLS)
+                .add(ModBlocks.TROLL_WALL.get());
     }
 
 }

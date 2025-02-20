@@ -41,13 +41,41 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         oreSmelting(recipeOutput, SMILEY_SMELTABLES, RecipeCategory.MISC, ModItems.SMILEY.get(),0.25f,200,"smiley");
         oreBlasting(recipeOutput, SMILEY_SMELTABLES, RecipeCategory.MISC, ModItems.SMILEY.get(),0.25f,100,"smiley");
+
+        stairBuilder(ModBlocks.TROLL_STAIRS.get(), Ingredient.of(ModItems.TROLL))
+                .group("troll")
+                .unlockedBy("has_troll",has(ModItems.TROLL))
+                .save(recipeOutput);
+        slab(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.TROLL_SLAB.get(), ModItems.TROLL.get());
+        buttonBuilder(ModBlocks.TROLL_BUTTON.get(), Ingredient.of(ModItems.TROLL))
+                .group("troll")
+                .unlockedBy("has_troll",has(ModItems.TROLL))
+                .save(recipeOutput);
+        pressurePlate(recipeOutput, ModBlocks.TROLL_PRESSURE_PLATE.get(), ModItems.TROLL.get());
+        fenceBuilder(ModBlocks.TROLL_FENCE.get(), Ingredient.of(ModItems.TROLL))
+                .group("troll")
+                .unlockedBy("has_troll",has(ModItems.TROLL))
+                .save(recipeOutput);
+        fenceGateBuilder(ModBlocks.TROLL_FENCE_GATE.get(), Ingredient.of(ModItems.TROLL))
+                .group("troll")
+                .unlockedBy("has_troll",has(ModItems.TROLL))
+                .save(recipeOutput);
+        wall(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.TROLL_WALL.get() ,ModItems.TROLL.get());
+        doorBuilder(ModBlocks.TROLL_DOOR.get(), Ingredient.of(ModItems.TROLL))
+                .group("troll")
+                .unlockedBy("has_troll",has(ModItems.TROLL))
+                .save(recipeOutput);
+        trapdoorBuilder(ModBlocks.TROLL_TRAPDOOR.get(), Ingredient.of(ModItems.TROLL))
+                .group("troll")
+                .unlockedBy("has_troll",has(ModItems.TROLL))
+                .save(recipeOutput);
     }
 
 
     protected static void oreSmelting(RecipeOutput recipeOutput, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult,
-                                      float pExperience, int pCookingTIme, String pGroup) {
+                                      float pExperience, int pCookingTime, String pGroup) {
         oreCooking(recipeOutput, RecipeSerializer.SMELTING_RECIPE, SmeltingRecipe::new, pIngredients, pCategory, pResult,
-                pExperience, pCookingTIme, pGroup, "_from_smelting");
+                pExperience, pCookingTime, pGroup, "_from_smelting");
     }
 
     protected static void oreBlasting(RecipeOutput recipeOutput, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult,

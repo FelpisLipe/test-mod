@@ -38,6 +38,15 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("creativetab.testmod.troll_blocks"))
                     .displayItems((parameters, output) -> {
                         output.accept(ModBlocks.TROLL_BLOCK);
+                        output.accept(ModBlocks.TROLL_STAIRS);
+                        output.accept(ModBlocks.TROLL_SLAB);
+                        output.accept(ModBlocks.TROLL_PRESSURE_PLATE);
+                        output.accept(ModBlocks.TROLL_BUTTON);
+                        output.accept(ModBlocks.TROLL_FENCE);
+                        output.accept(ModBlocks.TROLL_FENCE_GATE);
+                        output.accept(ModBlocks.TROLL_WALL);
+                        output.accept(ModBlocks.TROLL_DOOR);
+                        output.accept(ModBlocks.TROLL_TRAPDOOR);
                         output.accept(ModBlocks.SMILEY_ORE);
                         output.accept(ModBlocks.SHADY_BLOCK);
                     })

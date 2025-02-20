@@ -29,9 +29,19 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     protected void generate() {
         dropSelf(ModBlocks.TROLL_BLOCK.get());
         dropSelf(ModBlocks.SHADY_BLOCK.get());
-
         add(ModBlocks.SMILEY_ORE.get(),
                 block -> createOreDrop(ModBlocks.SMILEY_ORE.get(), ModItems.SMILEY.get()));
+        dropSelf(ModBlocks.TROLL_STAIRS.get());
+        add(ModBlocks.TROLL_SLAB.get(),
+                block -> createSlabItemTable(ModBlocks.TROLL_SLAB.get()));
+        dropSelf(ModBlocks.TROLL_PRESSURE_PLATE.get());
+        dropSelf(ModBlocks.TROLL_BUTTON.get());
+        dropSelf(ModBlocks.TROLL_FENCE.get());
+        dropSelf(ModBlocks.TROLL_FENCE_GATE.get());
+        dropSelf(ModBlocks.TROLL_WALL.get());
+        add(ModBlocks.TROLL_DOOR.get(),
+                block -> createDoorTable(ModBlocks.TROLL_DOOR.get()));
+        dropSelf(ModBlocks.TROLL_TRAPDOOR.get());
     }
 
     protected LootTable.Builder createMultipleOreDrops(Block pBlock, Item item, float minDrops, float maxDrops) {

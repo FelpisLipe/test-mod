@@ -7,6 +7,15 @@
   "item.testmod.hot_cheeto": "Hot Cheeto",
 
   "block.testmod.troll_block": "Troll Block",
+  "block.testmod.troll_stairs": "Troll Stairs",
+  "block.testmod.troll_slab": "Troll Slab",
+  "block.testmod.troll_pressure_plate": "Troll Pressure Plate",
+  "block.testmod.troll_button": "Troll Button",
+  "block.testmod.troll_fence": "Troll Fence",
+  "block.testmod.troll_fence_gate": "Troll Fence Gate",
+  "block.testmod.troll_wall": "Troll Wall",
+  "block.testmod.troll_door": "Troll Door",
+  "block.testmod.troll_trapdoor": "Troll Trapdoor",
   "block.testmod.shady_block": "Shady Block",
   "block.testmod.smiley_ore": "Smiley Ore",
 
