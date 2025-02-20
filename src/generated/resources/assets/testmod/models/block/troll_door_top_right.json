@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/door_top_right",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bottom": "testmod:block/troll_door_bottom",
+    "top": "testmod:block/troll_door_top"
+  }
+}

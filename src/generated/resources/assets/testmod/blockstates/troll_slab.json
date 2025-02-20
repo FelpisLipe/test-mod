@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "testmod:block/troll_slab"
+    },
+    "type=double": {
+      "model": "testmod:block/troll_block"
+    },
+    "type=top": {
+      "model": "testmod:block/troll_slab_top"
+    }
+  }
+}

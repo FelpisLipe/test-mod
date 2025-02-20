@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "troll",
+  "key": {
+    "#": {
+      "item": "testmod:troll"
+    }
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 2,
+    "id": "testmod:troll_trapdoor"
+  }
+}

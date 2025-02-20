@@ -1,0 +1,10 @@
+{
+  "values": {
+    "testmod:hot_breath": {
+      "burn_time": 1600
+    },
+    "testmod:hot_cheeto": {
+      "burn_time": 2000
+    }
+  }
+}

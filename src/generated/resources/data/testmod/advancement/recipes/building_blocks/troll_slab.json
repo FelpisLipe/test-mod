@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "testmod:troll_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_troll": {
+      "conditions": {
+        "items": [
+          {
+            "items": "testmod:troll"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_troll"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "testmod:troll_slab"
+    ]
+  }
+}

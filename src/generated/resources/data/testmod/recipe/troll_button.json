@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "troll",
+  "ingredients": [
+    {
+      "item": "testmod:troll"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "testmod:troll_button"
+  }
+}
