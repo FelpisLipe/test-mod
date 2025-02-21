@@ -8,6 +8,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Monster;
@@ -26,9 +27,13 @@ public class ShadyBlock extends Block {
 
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-
-        level.playSound(player, pos, SoundEvents.HORSE_DEATH, SoundSource.BLOCKS, 1f, 2f);
-        return InteractionResult.SUCCESS;
+        if(player.hasItemInSlot(EquipmentSlot.MAINHAND)) {
+            return InteractionResult.FAIL;
+        }
+        else {
+            level.playSound(player, pos, SoundEvents.HORSE_DEATH, SoundSource.BLOCKS, 1f, 2f);
+            return InteractionResult.SUCCESS;
+        }
     }
 
     @Override
