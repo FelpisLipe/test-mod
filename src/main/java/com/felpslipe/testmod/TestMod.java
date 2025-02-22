@@ -1,6 +1,7 @@
 package com.felpslipe.testmod;
 
 import com.felpslipe.testmod.block.ModBlocks;
+import com.felpslipe.testmod.hud.Hud;
 import com.felpslipe.testmod.item.ModCreativeModeTabs;
 import com.felpslipe.testmod.item.ModItems;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -52,6 +53,9 @@ public class TestMod {
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
 
+
+        // Test hud shit
+        Hud.register(modEventBus);
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);

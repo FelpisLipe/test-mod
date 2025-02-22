@@ -24,5 +24,8 @@
 
   "tooltip.testmod.thirty": "§7I think I got 185 pounds§r",
   "tooltip.testmod.frango": "§7Press §8[§6SHIFT§8]§7 to learn more§r",
-  "tooltip.testmod.frango.shift_down": "§7https://tenor.com/view/studiosoriginals-slime-satisfying-frango-leaomartelo-gif-4732296289161260152§r"
+  "tooltip.testmod.frango.shift_down": "§7https://tenor.com/view/studiosoriginals-slime-satisfying-frango-leaomartelo-gif-4732296289161260152§r",
+
+  "key.categories.testmod": "Test Mod",
+  "key.testmod.toggle_hud": "Toggle HUD"
 }

@@ -21,7 +21,7 @@ public class ThirtyItem extends Item {
                     Blocks.END_STONE_BRICKS, Blocks.BEDROCK,
                     Blocks.DEEPSLATE, Blocks.SCULK_SHRIEKER,
                     Blocks.OXIDIZED_COPPER, Blocks.COPPER_BLOCK,
-                    Blocks.ACACIA_DOOR, ModBlocks.TROLL_BLOCK.get()
+                    Blocks.ACACIA_DOOR, ModBlocks.TROLL_DOOR.get()
             );
 
 
