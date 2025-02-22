@@ -96,7 +96,7 @@ public class Hud {
         enabled = !enabled;
     }
     public static final KeyMapping TOGGLE_HUD =
-            new KeyMapping("key.testmod.toggle_hud", GLFW.GLFW_KEY_G, "key.categories.testmod");
+            new KeyMapping("key.testmod.toggle_hud", GLFW.GLFW_KEY_G, "key.categories.testmod.hud");
 
     public static void eventClientTickEventPost(ClientTickEvent.Post event) {
         onClientTick();
@@ -111,7 +111,6 @@ public class Hud {
         while (TOGGLE_HUD.consumeClick()) {
             if (!player.isShiftKeyDown()) {
                 toggle();
-                return;
             }
         }
     }
@@ -122,7 +121,9 @@ public class Hud {
     }
 
     @SubscribeEvent
-    public void registerBindings(RegisterKeyMappingsEvent event) {
+    public static void registerBindings(RegisterKeyMappingsEvent event) {
         event.register(TOGGLE_HUD);
     }
+
+
 }

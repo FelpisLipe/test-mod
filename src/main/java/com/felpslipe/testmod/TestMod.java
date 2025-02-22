@@ -56,6 +56,7 @@ public class TestMod {
 
         // Test hud shit
         Hud.register(modEventBus);
+        modEventBus.addListener(Hud::registerBindings);
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
