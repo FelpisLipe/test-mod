@@ -49,6 +49,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.TROLL_TRAPDOOR);
                         output.accept(ModBlocks.SMILEY_ORE);
                         output.accept(ModBlocks.SHADY_BLOCK);
+                        output.accept(ModBlocks.THIRTY_LAMP);
                     })
                     .build());
 

@@ -2,6 +2,7 @@ package com.felpslipe.testmod.block;
 
 import com.felpslipe.testmod.TestMod;
 import com.felpslipe.testmod.block.custom.ShadyBlock;
+import com.felpslipe.testmod.block.custom.ThirtyLampBlock;
 import com.felpslipe.testmod.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -85,6 +86,11 @@ public class ModBlocks {
                             .strength(4f)
                             .requiresCorrectToolForDrops()
                             .noOcclusion()));
+    public static final DeferredBlock<Block> THIRTY_LAMP = registerBlock("thirty_lamp",
+            () -> new ThirtyLampBlock(BlockBehaviour.Properties.of()
+                    .strength(2f)
+                    .requiresCorrectToolForDrops()
+                    .lightLevel(state -> state.getValue(ThirtyLampBlock.CLICKED) ? 15 : 0 )));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);

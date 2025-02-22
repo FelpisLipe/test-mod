@@ -1,9 +1,13 @@
 package com.felpslipe.testmod.datagen;
 
+import com.felpslipe.testmod.Config;
 import com.felpslipe.testmod.TestMod;
 import com.felpslipe.testmod.block.ModBlocks;
+import com.felpslipe.testmod.block.custom.ThirtyLampBlock;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -28,7 +32,18 @@ public class ModBlockStateProvider extends BlockStateProvider {
         wallBlock(ModBlocks.TROLL_WALL.get(), blockTexture(ModBlocks.TROLL_BLOCK.get()));
         doorBlockWithRenderType(ModBlocks.TROLL_DOOR.get(), modLoc("block/troll_door_bottom"), modLoc("block/troll_door_top"),"cutout");
         trapdoorBlockWithRenderType(ModBlocks.TROLL_TRAPDOOR.get(), modLoc("block/troll_trapdoor"), true,"cutout");
-
+        getVariantBuilder(ModBlocks.THIRTY_LAMP.get()).forAllStates(state -> {
+            if(state.getValue(ThirtyLampBlock.CLICKED)) {
+                return new ConfiguredModel[]{new ConfiguredModel(models().cubeAll("thirty_lamp_on",
+                        ResourceLocation.fromNamespaceAndPath(TestMod.MOD_ID, "block/" + "thirty_lamp_on")))};
+            }
+            else {
+                return new ConfiguredModel[]{new ConfiguredModel(models().cubeAll("thirty_lamp_off",
+                        ResourceLocation.fromNamespaceAndPath(TestMod.MOD_ID, "block/" + "thirty_lamp_off")))};
+            }
+        });
+        simpleBlockItem(ModBlocks.THIRTY_LAMP.get(), models().cubeAll("thirty_lamp_off",
+                ResourceLocation.fromNamespaceAndPath(TestMod.MOD_ID, "block/" + "thirty_lamp_off")));
 
         blockItem(ModBlocks.TROLL_STAIRS);
         blockItem(ModBlocks.TROLL_SLAB);
