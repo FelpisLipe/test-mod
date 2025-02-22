@@ -7,7 +7,6 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
-import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
@@ -109,7 +108,7 @@ public class Hud {
         }
 
         while (TOGGLE_HUD.consumeClick()) {
-            if (!player.isShiftKeyDown()) {
+            if (!player.isShiftKeyDown() ) {
                 toggle();
             }
         }
@@ -118,6 +117,7 @@ public class Hud {
     public static void register(IEventBus eventBus) {
         NeoForge.EVENT_BUS.addListener(Hud::eventRenderGameOverlayEvent);
         NeoForge.EVENT_BUS.addListener(Hud::eventClientTickEventPost);
+        eventBus.addListener(Hud::registerBindings);
     }
 
     @SubscribeEvent
