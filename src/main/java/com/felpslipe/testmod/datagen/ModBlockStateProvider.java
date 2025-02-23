@@ -32,24 +32,28 @@ public class ModBlockStateProvider extends BlockStateProvider {
         wallBlock(ModBlocks.TROLL_WALL.get(), blockTexture(ModBlocks.TROLL_BLOCK.get()));
         doorBlockWithRenderType(ModBlocks.TROLL_DOOR.get(), modLoc("block/troll_door_bottom"), modLoc("block/troll_door_top"),"cutout");
         trapdoorBlockWithRenderType(ModBlocks.TROLL_TRAPDOOR.get(), modLoc("block/troll_trapdoor"), true,"cutout");
-        getVariantBuilder(ModBlocks.THIRTY_LAMP.get()).forAllStates(state -> {
-            if(state.getValue(ThirtyLampBlock.CLICKED)) {
-                return new ConfiguredModel[]{new ConfiguredModel(models().cubeAll("thirty_lamp_on",
-                        ResourceLocation.fromNamespaceAndPath(TestMod.MOD_ID, "block/" + "thirty_lamp_on")))};
-            }
-            else {
-                return new ConfiguredModel[]{new ConfiguredModel(models().cubeAll("thirty_lamp_off",
-                        ResourceLocation.fromNamespaceAndPath(TestMod.MOD_ID, "block/" + "thirty_lamp_off")))};
-            }
-        });
-        simpleBlockItem(ModBlocks.THIRTY_LAMP.get(), models().cubeAll("thirty_lamp_off",
-                ResourceLocation.fromNamespaceAndPath(TestMod.MOD_ID, "block/" + "thirty_lamp_off")));
+        lampBlock(ModBlocks.THIRTY_LAMP);
 
         blockItem(ModBlocks.TROLL_STAIRS);
         blockItem(ModBlocks.TROLL_SLAB);
         blockItem(ModBlocks.TROLL_PRESSURE_PLATE);
         blockItem(ModBlocks.TROLL_FENCE_GATE);
         blockItem(ModBlocks.TROLL_TRAPDOOR, "_bottom");
+    }
+
+    private void lampBlock(DeferredBlock<?> deferredBlock) {
+        getVariantBuilder(deferredBlock.get()).forAllStates(state -> {
+            if(state.getValue(ThirtyLampBlock.CLICKED)) {
+                return new ConfiguredModel[]{new ConfiguredModel(models().cubeAll(deferredBlock.getId() + "_on",
+                        ResourceLocation.fromNamespaceAndPath(TestMod.MOD_ID, "block/" + deferredBlock.getId().getPath() + "_on")))};
+            }
+            else {
+                return new ConfiguredModel[]{new ConfiguredModel(models().cubeAll(deferredBlock.getId() + "_off",
+                        ResourceLocation.fromNamespaceAndPath(TestMod.MOD_ID, "block/" + deferredBlock.getId().getPath() + "_off")))};
+            }
+        });
+        simpleBlockItem(deferredBlock.get(), models().cubeAll(deferredBlock.getId() + "_off",
+                ResourceLocation.fromNamespaceAndPath(TestMod.MOD_ID, "block/" + deferredBlock.getId().getPath() + "_off")));
     }
 
     private void blockWithItem(DeferredBlock<?> deferredBlock) {
