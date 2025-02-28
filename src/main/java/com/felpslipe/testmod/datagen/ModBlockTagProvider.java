@@ -21,13 +21,15 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.SMILEY_ORE.get())
                 .add(ModBlocks.TROLL_BLOCK.get())
-                .add(ModBlocks.SHADY_BLOCK.get());
+                .add(ModBlocks.SHADY_BLOCK.get())
+                .add(ModBlocks.THIRTY_LAMP.get());
 
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.SMILEY_ORE.get());
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.TROLL_BLOCK.get())
-                .add(ModBlocks.SHADY_BLOCK.get());
+                .add(ModBlocks.SHADY_BLOCK.get())
+                .add(ModBlocks.THIRTY_LAMP.get());
 
         tag(BlockTags.FENCES)
                 .add(ModBlocks.TROLL_FENCE.get());

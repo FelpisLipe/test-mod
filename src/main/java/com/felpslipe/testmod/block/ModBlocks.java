@@ -90,7 +90,8 @@ public class ModBlocks {
             () -> new ThirtyLampBlock(BlockBehaviour.Properties.of()
                     .strength(2f)
                     .requiresCorrectToolForDrops()
-                    .lightLevel(state -> state.getValue(ThirtyLampBlock.CLICKED) ? 15 : 0 )));
+                    .lightLevel(state -> state.getValue(ThirtyLampBlock.CLICKED) ? 15 : 0 )
+                    .sound(SoundType.GLASS)));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
