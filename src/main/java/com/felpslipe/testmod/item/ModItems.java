@@ -4,9 +4,7 @@ import com.felpslipe.testmod.TestMod;
 import com.felpslipe.testmod.item.custom.ThirtyItem;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -49,6 +47,21 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> HOT_CHEETO = ITEMS.register("hot_cheeto",
             () -> new Item(new Item.Properties()));
+    public static final DeferredItem<SwordItem> SMILEY_SWORD = ITEMS.register("smiley_sword",
+            () -> new SwordItem(ModToolTiers.SMILEY, new Item.Properties()
+                    .attributes(SwordItem.createAttributes(ModToolTiers.SMILEY, 3, -2.4f))));
+    public static final DeferredItem<PickaxeItem> SMILEY_PICKAXE = ITEMS.register("smiley_pickaxe",
+            () -> new PickaxeItem(ModToolTiers.SMILEY, new Item.Properties()
+                    .attributes(PickaxeItem.createAttributes(ModToolTiers.SMILEY, 1.5f, -2.8f))));
+    public static final DeferredItem<AxeItem> SMILEY_AXE = ITEMS.register("smiley_axe",
+            () -> new AxeItem(ModToolTiers.SMILEY, new Item.Properties()
+                    .attributes(AxeItem.createAttributes(ModToolTiers.SMILEY, 5, -3f))));
+    public static final DeferredItem<ShovelItem> SMILEY_SHOVEL = ITEMS.register("smiley_shovel",
+            () -> new ShovelItem(ModToolTiers.SMILEY, new Item.Properties()
+                    .attributes(ShovelItem.createAttributes(ModToolTiers.SMILEY, 2, -3f))));
+    public static final DeferredItem<HoeItem> SMILEY_HOE = ITEMS.register("smiley_hoe",
+            () -> new HoeItem(ModToolTiers.SMILEY, new Item.Properties()
+                    .attributes(HoeItem.createAttributes(ModToolTiers.SMILEY, -3, 0f))));
 
     // Registering items
     public static void register(IEventBus eventBus) {

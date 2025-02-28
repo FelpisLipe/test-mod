@@ -6,6 +6,7 @@ import com.felpslipe.testmod.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -25,5 +26,16 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.SMILEY.get())
                 .add(Items.NETHERITE_INGOT)
                 .add(Items.NETHERITE_BLOCK);
+        tag(ItemTags.SWORDS)
+                .add(ModItems.SMILEY_SWORD.get());
+        tag(ItemTags.PICKAXES)
+                .add(ModItems.SMILEY_PICKAXE.get());
+        tag(ItemTags.SHOVELS)
+                .add(ModItems.SMILEY_SHOVEL.get());
+        tag(ItemTags.AXES)
+                .add(ModItems.SMILEY_AXE.get());
+        tag(ItemTags.HOES)
+                .add(ModItems.SMILEY_HOE.get());
+
     }
 }

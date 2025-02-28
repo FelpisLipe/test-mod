@@ -5,6 +5,11 @@
   "item.testmod.frango": "Frango",
   "item.testmod.hot_breath": "Hot Breath",
   "item.testmod.hot_cheeto": "Hot Cheeto",
+  "item.testmod.smiley_sword": "Smiley Sword",
+  "item.testmod.smiley_pickaxe": "Smiley Pickaxe",
+  "item.testmod.smiley_axe": "Smiley Axe",
+  "item.testmod.smiley_shovel": "Smiley Shovel",
+  "item.testmod.smiley_hoe": "Smiley Hoe",
 
   "block.testmod.troll_block": "Troll Block",
   "block.testmod.troll_stairs": "Troll Stairs",
