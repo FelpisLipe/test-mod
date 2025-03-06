@@ -32,6 +32,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SMILEY_PICKAXE);
                         output.accept(ModItems.SMILEY_AXE);
                         output.accept(ModItems.SMILEY_HOE);
+                        output.accept(ModItems.SMILEY_HAMMER);
                     })
                     .build());
 

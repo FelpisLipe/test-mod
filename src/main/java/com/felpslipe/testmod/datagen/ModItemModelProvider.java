@@ -34,6 +34,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.SMILEY_PICKAXE);
         handheldItem(ModItems.SMILEY_AXE);
         handheldItem(ModItems.SMILEY_HOE);
+        handheldItem(ModItems.SMILEY_HAMMER);
 
 
     }

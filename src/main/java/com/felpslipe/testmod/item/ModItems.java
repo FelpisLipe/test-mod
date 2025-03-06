@@ -1,6 +1,7 @@
 package com.felpslipe.testmod.item;
 
 import com.felpslipe.testmod.TestMod;
+import com.felpslipe.testmod.item.custom.HammerItem;
 import com.felpslipe.testmod.item.custom.ThirtyItem;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -62,6 +63,9 @@ public class ModItems {
     public static final DeferredItem<HoeItem> SMILEY_HOE = ITEMS.register("smiley_hoe",
             () -> new HoeItem(ModToolTiers.SMILEY, new Item.Properties()
                     .attributes(HoeItem.createAttributes(ModToolTiers.SMILEY, -3, 0f))));
+    public static final DeferredItem<HammerItem> SMILEY_HAMMER = ITEMS.register("smiley_hammer",
+            () -> new HammerItem(ModToolTiers.SMILEY, new Item.Properties()
+                    .attributes(PickaxeItem.createAttributes(ModToolTiers.SMILEY, 7f, -3.5f))));
 
     // Registering items
     public static void register(IEventBus eventBus) {
