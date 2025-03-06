@@ -4,6 +4,7 @@ import com.felpslipe.testmod.TestMod;
 import com.felpslipe.testmod.item.custom.HammerItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -30,7 +31,7 @@ public class ModEvents {
                 return;
             }
 
-            for(BlockPos pos : HammerItem.getBlocksToBeDestroyed(1, originPos, serverPlayer)) {
+            for(BlockPos pos : HammerItem.getBlocksToBeDestroyed(0, originPos, serverPlayer)) {
                 if(pos == originPos || !hammer.isCorrectToolForDrops(mainHandItem, event.getLevel().getBlockState(pos))) {
                     continue;
                 }

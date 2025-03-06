@@ -33,6 +33,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SMILEY_AXE);
                         output.accept(ModItems.SMILEY_HOE);
                         output.accept(ModItems.SMILEY_HAMMER);
+                        output.accept(ModItems.SMILEY_HELMET);
+                        output.accept(ModItems.SMILEY_CHESTPLATE);
+                        output.accept(ModItems.SMILEY_LEGGINGS);
+                        output.accept(ModItems.SMILEY_BOOTS);
                     })
                     .build());
 

@@ -11,6 +11,10 @@
   "item.testmod.smiley_shovel": "Smiley Shovel",
   "item.testmod.smiley_hoe": "Smiley Hoe",
   "item.testmod.smiley_hammer": "Smiley Hammer",
+  "item.testmod.smiley_helmet": "Smiley Helmet",
+  "item.testmod.smiley_chestplate": "Smiley Chestplate",
+  "item.testmod.smiley_leggings": "Smiley Leggings",
+  "item.testmod.smiley_boots": "Smiley Boots",
 
   "block.testmod.troll_block": "Troll Block",
   "block.testmod.troll_stairs": "Troll Stairs",

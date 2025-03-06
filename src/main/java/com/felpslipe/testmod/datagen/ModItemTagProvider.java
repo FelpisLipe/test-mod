@@ -36,6 +36,11 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.SMILEY_AXE.get());
         tag(ItemTags.HOES)
                 .add(ModItems.SMILEY_HOE.get());
+        this.tag(ItemTags.TRIMMABLE_ARMOR)
+                .add(ModItems.SMILEY_HELMET.get())
+                .add(ModItems.SMILEY_CHESTPLATE.get())
+                .add(ModItems.SMILEY_LEGGINGS.get())
+                .add(ModItems.SMILEY_BOOTS.get());
 
     }
 }
