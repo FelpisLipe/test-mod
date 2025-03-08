@@ -28,7 +28,7 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 public class TestMod {
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "testmod";
-    // Direly reference a slf4j logger
+    // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
