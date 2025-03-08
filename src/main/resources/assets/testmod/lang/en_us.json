@@ -38,5 +38,12 @@
   "tooltip.testmod.frango.shift_down": "§7https://tenor.com/view/studiosoriginals-slime-satisfying-frango-leaomartelo-gif-4732296289161260152§r",
 
   "key.categories.testmod.hud": "Test Mod HUD",
-  "key.testmod.toggle_hud": "Toggle HUD"
+  "key.testmod.toggle_hud": "Toggle HUD",
+
+  "sounds.testmod.thirty_use": "Thirty speaks",
+  "sounds.testmod.shady_block_hit": "Block breaking",
+  "sounds.testmod.shady_block_step": "Footsteps",
+  "sounds.testmod.shady_block_place": "Block placed",
+  "sounds.testmod.shady_block_break": "Block broken",
+  "sounds.testmod.shady_block_fall": "Something fell"
 }

@@ -1,6 +1,7 @@
 package com.felpslipe.testmod.item.custom;
 
 import com.felpslipe.testmod.block.ModBlocks;
+import com.felpslipe.testmod.sound.ModSounds;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -41,7 +42,7 @@ public class ThirtyItem extends Item {
                 context.getItemInHand().hurtAndBreak(1, ((ServerLevel) level), context.getPlayer(),
                         item -> context.getPlayer().onEquippedItemBroken(item, EquipmentSlot.MAINHAND));
 
-                level.playSound(null, context.getClickedPos(), SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS);
+                level.playSound(null, context.getClickedPos(), ModSounds.THIRTY_USE.get(), SoundSource.BLOCKS);
             }
 
         }

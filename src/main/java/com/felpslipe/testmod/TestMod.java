@@ -4,6 +4,7 @@ import com.felpslipe.testmod.block.ModBlocks;
 import com.felpslipe.testmod.hud.Hud;
 import com.felpslipe.testmod.item.ModCreativeModeTabs;
 import com.felpslipe.testmod.item.ModItems;
+import com.felpslipe.testmod.sound.ModSounds;
 import net.minecraft.world.item.CreativeModeTabs;
 import org.slf4j.Logger;
 
@@ -27,7 +28,7 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 public class TestMod {
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "testmod";
-    // Directly reference a slf4j logger
+    // Direly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
@@ -56,6 +57,9 @@ public class TestMod {
 
         // Test hud shit
         Hud.register(modEventBus);
+
+        // Sound register
+        ModSounds.register(modEventBus);
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);

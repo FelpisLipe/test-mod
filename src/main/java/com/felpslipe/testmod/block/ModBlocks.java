@@ -4,6 +4,7 @@ import com.felpslipe.testmod.TestMod;
 import com.felpslipe.testmod.block.custom.ShadyBlock;
 import com.felpslipe.testmod.block.custom.ThirtyLampBlock;
 import com.felpslipe.testmod.item.ModItems;
+import com.felpslipe.testmod.sound.ModSounds;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -37,7 +38,8 @@ public class ModBlocks {
     public static final DeferredBlock<Block> SHADY_BLOCK = registerBlock("shady_block",
             () -> new ShadyBlock(BlockBehaviour.Properties.of()
                     .strength(2f)
-                    .requiresCorrectToolForDrops()));
+                    .requiresCorrectToolForDrops()
+                    .sound(ModSounds.SHADY_BLOCK_SOUNDS)));
 
     public static final DeferredBlock<StairBlock> TROLL_STAIRS = registerBlock("troll_stairs",
             () -> new StairBlock(ModBlocks.TROLL_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.of()

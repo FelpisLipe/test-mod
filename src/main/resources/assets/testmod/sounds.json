@@ -1,0 +1,39 @@
+{
+  "thirty_use": {
+    "subtitle": "sounds.testmod.thirty_use",
+    "sounds": [
+      "testmod:thirty_use"
+    ]
+  },
+  "shady_block_break": {
+    "subtitle": "sounds.testmod.shady_block_break",
+    "sounds": [
+      "testmod:shady_block_break"
+    ]
+  },
+  "shady_block_step": {
+    "subtitle": "sounds.testmod.shady_block_step",
+    "sounds": [
+      "testmod:shady_block_step_1",
+      "testmod:shady_block_step_2"
+    ]
+  },
+  "shady_block_hit": {
+    "subtitle": "sounds.testmod.shady_block_hit",
+    "sounds": [
+      "testmod:shady_block_hit"
+    ]
+  },
+  "shady_block_place": {
+    "subtitle": "sounds.testmod.shady_block_place",
+    "sounds": [
+      "testmod:shady_block_place"
+    ]
+  },
+  "shady_block_fall": {
+    "subtitle": "sounds.testmod.shady_block_fall",
+    "sounds": [
+      "testmod:shady_block_fall"
+    ]
+  }
+}
