@@ -3,14 +3,19 @@ package com.felpslipe.testmod.datagen;
 import com.felpslipe.testmod.Config;
 import com.felpslipe.testmod.TestMod;
 import com.felpslipe.testmod.block.ModBlocks;
+import com.felpslipe.testmod.block.custom.FrangoCropBlock;
 import com.felpslipe.testmod.block.custom.ThirtyLampBlock;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
+
+import java.util.function.Function;
 
 public class ModBlockStateProvider extends BlockStateProvider {
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -39,6 +44,25 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockItem(ModBlocks.TROLL_PRESSURE_PLATE);
         blockItem(ModBlocks.TROLL_FENCE_GATE);
         blockItem(ModBlocks.TROLL_TRAPDOOR, "_bottom");
+
+        makeCrop(((CropBlock) ModBlocks.FRANGO_CROP.get()), "frango_crop_stage", "frango_crop_stage");
+
+    }
+
+
+
+    public void makeCrop(CropBlock block, String modelName, String textureName) {
+        Function<BlockState, ConfiguredModel[]> function = state -> states(state, block, modelName, textureName);
+
+        getVariantBuilder(block).forAllStates(function);
+    }
+
+    private ConfiguredModel[] states(BlockState state, CropBlock block, String modelName, String textureName) {
+        ConfiguredModel[] models = new ConfiguredModel[1];
+        models[0] = new ConfiguredModel(models().crop(modelName + state.getValue(((FrangoCropBlock) block).getAgeProperty()),
+                ResourceLocation.fromNamespaceAndPath(TestMod.MOD_ID, "block/" + textureName + state.getValue(((FrangoCropBlock) block).getAgeProperty()))).renderType("cutout"));
+
+        return models;
     }
 
     private void lampBlock(DeferredBlock<?> deferredBlock) {

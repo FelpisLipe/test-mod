@@ -1,0 +1,10 @@
+{
+  "values": {
+    "testmod:frango": {
+      "chance": 0.69
+    },
+    "testmod:frango_seeds": {
+      "chance": 0.12
+    }
+  }
+}

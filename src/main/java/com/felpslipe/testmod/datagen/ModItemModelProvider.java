@@ -63,6 +63,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimmedArmorItem(ModItems.SMILEY_LEGGINGS);
         trimmedArmorItem(ModItems.SMILEY_BOOTS);
 
+        basicItem(ModItems.FRANGO_SEEDS.get());
+
 
     }
 

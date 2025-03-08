@@ -37,6 +37,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SMILEY_CHESTPLATE);
                         output.accept(ModItems.SMILEY_LEGGINGS);
                         output.accept(ModItems.SMILEY_BOOTS);
+                        output.accept(ModItems.FRANGO_SEEDS);
                     })
                     .build());
 

@@ -1,6 +1,7 @@
 package com.felpslipe.testmod.block;
 
 import com.felpslipe.testmod.TestMod;
+import com.felpslipe.testmod.block.custom.FrangoCropBlock;
 import com.felpslipe.testmod.block.custom.ShadyBlock;
 import com.felpslipe.testmod.block.custom.ThirtyLampBlock;
 import com.felpslipe.testmod.item.ModItems;
@@ -94,6 +95,8 @@ public class ModBlocks {
                     .requiresCorrectToolForDrops()
                     .lightLevel(state -> state.getValue(ThirtyLampBlock.CLICKED) ? 15 : 0 )
                     .sound(SoundType.GLASS)));
+    public static final DeferredBlock<Block> FRANGO_CROP = BLOCKS.register("frango_crop",
+            () -> new FrangoCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BEETROOTS)));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);

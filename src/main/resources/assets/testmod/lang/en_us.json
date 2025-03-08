@@ -15,6 +15,7 @@
   "item.testmod.smiley_chestplate": "Smiley Chestplate",
   "item.testmod.smiley_leggings": "Smiley Leggings",
   "item.testmod.smiley_boots": "Smiley Boots",
+  "item.testmod.frango_seeds": "Frango Seeds",
 
   "block.testmod.troll_block": "Troll Block",
   "block.testmod.troll_stairs": "Troll Stairs",
@@ -29,6 +30,7 @@
   "block.testmod.shady_block": "Shady Block",
   "block.testmod.smiley_ore": "Smiley Ore",
   "block.testmod.thirty_lamp": "Thirty Lamp",
+  "block.testmod.frango_crop": "Frango Crop",
 
   "creativetab.testmod.troll_items": "Troll Items",
   "creativetab.testmod.troll_blocks": "Troll Blocks",

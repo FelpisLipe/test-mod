@@ -1,6 +1,7 @@
 package com.felpslipe.testmod.item;
 
 import com.felpslipe.testmod.TestMod;
+import com.felpslipe.testmod.block.ModBlocks;
 import com.felpslipe.testmod.item.custom.HammerItem;
 import com.felpslipe.testmod.item.custom.ThirtyItem;
 import net.minecraft.client.gui.screens.Screen;
@@ -78,6 +79,8 @@ public class ModItems {
         public static final DeferredItem<ArmorItem> SMILEY_BOOTS = ITEMS.register("smiley_boots",
             () -> new ArmorItem(ModArmorMaterials.SMILEY_ARMOR_MATERIAL, ArmorItem.Type.BOOTS,
                     new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(19))));
+        public static final DeferredItem<Item> FRANGO_SEEDS = ITEMS.register("frango_seeds",
+                () -> new ItemNameBlockItem(ModBlocks.FRANGO_CROP.get(), new Item.Properties()));
 
 
     // Registering items
