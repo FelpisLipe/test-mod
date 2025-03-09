@@ -34,6 +34,14 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.SHADY_BLOCK.get());
         add(ModBlocks.SMILEY_ORE.get(),
                 block -> createOreDrop(ModBlocks.SMILEY_ORE.get(), ModItems.SMILEY.get()));
+        add(ModBlocks.DEEPSLATE_SMILEY_ORE.get(),
+                block -> createOreDrop(ModBlocks.DEEPSLATE_SMILEY_ORE.get(), ModItems.SMILEY.get()));
+        add(ModBlocks.NETHER_SMILEY_ORE.get(),
+                block -> createMultipleOreDrops(ModBlocks.NETHER_SMILEY_ORE.get(), ModItems.SMILEY.get(), 2, 5));
+        add(ModBlocks.END_SMILEY_ORE.get(),
+                block -> createMultipleOreDrops(ModBlocks.NETHER_SMILEY_ORE.get(), ModItems.SMILEY.get(), 3, 6));
+
+
         dropSelf(ModBlocks.TROLL_STAIRS.get());
         add(ModBlocks.TROLL_SLAB.get(),
                 block -> createSlabItemTable(ModBlocks.TROLL_SLAB.get()));

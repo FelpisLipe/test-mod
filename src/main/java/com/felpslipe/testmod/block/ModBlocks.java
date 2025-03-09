@@ -36,6 +36,26 @@ public class ModBlocks {
                             .requiresCorrectToolForDrops()
                             .sound(SoundType.STONE)));
 
+    public static final DeferredBlock<Block> DEEPSLATE_SMILEY_ORE = registerBlock("deepslate_smiley_ore",
+            () -> new DropExperienceBlock(UniformInt.of(2, 9),
+                    BlockBehaviour.Properties.of()
+                            .strength(3f)
+                            .requiresCorrectToolForDrops()
+                            .sound(SoundType.DEEPSLATE)));
+
+    public static final DeferredBlock<Block> NETHER_SMILEY_ORE = registerBlock("nether_smiley_ore",
+            () -> new DropExperienceBlock(UniformInt.of(3, 9),
+                    BlockBehaviour.Properties.of()
+                            .strength(3f)
+                            .requiresCorrectToolForDrops()));
+
+    public static final DeferredBlock<Block> END_SMILEY_ORE = registerBlock("end_smiley_ore",
+            () -> new DropExperienceBlock(UniformInt.of(5, 9),
+                    BlockBehaviour.Properties.of()
+                            .strength(3f)
+                            .requiresCorrectToolForDrops()));
+
+
     public static final DeferredBlock<Block> SHADY_BLOCK = registerBlock("shady_block",
             () -> new ShadyBlock(BlockBehaviour.Properties.of()
                     .strength(2f)

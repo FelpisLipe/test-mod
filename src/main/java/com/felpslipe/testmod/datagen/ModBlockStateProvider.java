@@ -26,6 +26,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
         blockWithItem(ModBlocks.TROLL_BLOCK);
         blockWithItem(ModBlocks.SMILEY_ORE);
+        blockWithItem(ModBlocks.DEEPSLATE_SMILEY_ORE);
+        blockWithItem(ModBlocks.NETHER_SMILEY_ORE);
+        blockWithItem(ModBlocks.END_SMILEY_ORE);
         blockWithItem(ModBlocks.SHADY_BLOCK);
 
         stairsBlock(ModBlocks.TROLL_STAIRS.get(), blockTexture(ModBlocks.TROLL_BLOCK.get()));

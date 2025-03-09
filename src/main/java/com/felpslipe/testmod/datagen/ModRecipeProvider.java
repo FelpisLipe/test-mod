@@ -21,7 +21,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     @Override
     protected void buildRecipes(RecipeOutput recipeOutput) {
-        List<ItemLike> SMILEY_SMELTABLES = List.of(ModBlocks.SMILEY_ORE);
+        List<ItemLike> SMILEY_SMELTABLES = List.of(ModBlocks.SMILEY_ORE,
+                ModBlocks.DEEPSLATE_SMILEY_ORE,
+                ModBlocks.NETHER_SMILEY_ORE,
+                ModBlocks.END_SMILEY_ORE);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.TROLL_BLOCK.get())
                 .pattern("BBB")

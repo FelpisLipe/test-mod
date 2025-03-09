@@ -59,6 +59,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.TROLL_DOOR);
                         output.accept(ModBlocks.TROLL_TRAPDOOR);
                         output.accept(ModBlocks.SMILEY_ORE);
+                        output.accept(ModBlocks.DEEPSLATE_SMILEY_ORE);
+                        output.accept(ModBlocks.NETHER_SMILEY_ORE);
+                        output.accept(ModBlocks.END_SMILEY_ORE);
                         output.accept(ModBlocks.SHADY_BLOCK);
                         output.accept(ModBlocks.THIRTY_LAMP);
                     })
