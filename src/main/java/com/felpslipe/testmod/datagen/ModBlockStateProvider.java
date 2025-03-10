@@ -5,9 +5,12 @@ import com.felpslipe.testmod.TestMod;
 import com.felpslipe.testmod.block.ModBlocks;
 import com.felpslipe.testmod.block.custom.FrangoCropBlock;
 import com.felpslipe.testmod.block.custom.ThirtyLampBlock;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
@@ -50,8 +53,32 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         makeCrop(((CropBlock) ModBlocks.FRANGO_CROP.get()), "frango_crop_stage", "frango_crop_stage");
 
+        logBlock(((RotatedPillarBlock) ModBlocks.VIRAL_LOG.get()));
+        logBlock(((RotatedPillarBlock) ModBlocks.STRIPPED_VIRAL_LOG.get()));
+        axisBlock(((RotatedPillarBlock) ModBlocks.VIRAL_WOOD.get()), blockTexture(ModBlocks.VIRAL_LOG.get()), blockTexture(ModBlocks.VIRAL_LOG.get()));
+        axisBlock(((RotatedPillarBlock) ModBlocks.STRIPPED_VIRAL_WOOD.get()), blockTexture(ModBlocks.STRIPPED_VIRAL_LOG.get()), blockTexture(ModBlocks.STRIPPED_VIRAL_LOG.get()));
+
+        blockItem(ModBlocks.VIRAL_LOG);
+        blockItem(ModBlocks.VIRAL_WOOD);
+        blockWithItem(ModBlocks.VIRAL_PLANKS);
+        blockItem(ModBlocks.STRIPPED_VIRAL_LOG);
+        blockItem(ModBlocks.STRIPPED_VIRAL_WOOD);
+        saplingBlock(ModBlocks.VIRAL_SAPLING);
+        leavesBlock(ModBlocks.VIRAL_LEAVES);
+
+
     }
 
+    private void saplingBlock(DeferredBlock<Block> blockRegistryObject) {
+        simpleBlock(blockRegistryObject.get(),
+                models().cross(BuiltInRegistries.BLOCK.getKey(blockRegistryObject.get()).getPath(), blockTexture(blockRegistryObject.get())).renderType("cutout"));
+    }
+
+    private void leavesBlock(DeferredBlock<Block> blockRegistryObject) {
+        simpleBlockWithItem(blockRegistryObject.get(),
+                models().singleTexture(BuiltInRegistries.BLOCK.getKey(blockRegistryObject.get()).getPath(), ResourceLocation.parse("minecraft:block/leaves"),
+                        "all", blockTexture(blockRegistryObject.get())).renderType("cutout"));
+    }
 
 
     public void makeCrop(CropBlock block, String modelName, String textureName) {

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "testmod:block/viral_log_top",
+    "side": "testmod:block/viral_log"
+  }
+}

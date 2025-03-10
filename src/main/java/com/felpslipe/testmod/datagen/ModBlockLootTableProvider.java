@@ -59,6 +59,18 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(FrangoCropBlock.AGE, 3));
         this.add(ModBlocks.FRANGO_CROP.get(), this.createCropDrops(ModBlocks.FRANGO_CROP.get(),
                 ModItems.FRANGO.get(), ModItems.FRANGO_SEEDS.get(), lootItemConditionBuilder));
+
+        this.dropSelf(ModBlocks.VIRAL_LOG.get());
+        this.dropSelf(ModBlocks.VIRAL_WOOD.get());
+        this.dropSelf(ModBlocks.STRIPPED_VIRAL_LOG.get());
+        this.dropSelf(ModBlocks.STRIPPED_VIRAL_WOOD.get());
+        this.dropSelf(ModBlocks.VIRAL_PLANKS.get());
+        this.dropSelf(ModBlocks.VIRAL_SAPLING.get());
+        this.add(ModBlocks.VIRAL_LEAVES.get(), block -> createLeavesDrops(block, ModBlocks.VIRAL_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+
+
+
+
     }
 
     protected LootTable.Builder createMultipleOreDrops(Block pBlock, Item item, float minDrops, float maxDrops) {

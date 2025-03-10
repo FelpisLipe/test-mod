@@ -64,6 +64,13 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.END_SMILEY_ORE);
                         output.accept(ModBlocks.SHADY_BLOCK);
                         output.accept(ModBlocks.THIRTY_LAMP);
+                        output.accept(ModBlocks.VIRAL_LOG);
+                        output.accept(ModBlocks.STRIPPED_VIRAL_LOG);
+                        output.accept(ModBlocks.VIRAL_WOOD);
+                        output.accept(ModBlocks.STRIPPED_VIRAL_WOOD);
+                        output.accept(ModBlocks.VIRAL_PLANKS);
+                        output.accept(ModBlocks.VIRAL_SAPLING);
+                        output.accept(ModBlocks.VIRAL_LEAVES);
                     })
                     .build());
 

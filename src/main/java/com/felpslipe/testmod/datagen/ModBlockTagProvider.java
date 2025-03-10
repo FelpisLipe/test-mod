@@ -6,6 +6,7 @@ import com.felpslipe.testmod.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -45,6 +46,12 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(ModTags.Blocks.INCORRECT_FOR_SMILEY_TOOL)
                 .addTag(BlockTags.INCORRECT_FOR_IRON_TOOL)
                 .remove(ModTags.Blocks.NEEDS_SMILEY_TOOL);
+        this.tag(BlockTags.LOGS_THAT_BURN)
+                .add(ModBlocks.VIRAL_LOG.get())
+                .add(ModBlocks.STRIPPED_VIRAL_LOG.get())
+                .add(ModBlocks.VIRAL_WOOD.get())
+                .add(ModBlocks.STRIPPED_VIRAL_WOOD.get());
+
     }
 
 }

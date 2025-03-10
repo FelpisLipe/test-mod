@@ -1,6 +1,7 @@
 package com.felpslipe.testmod.datagen;
 
 import com.felpslipe.testmod.TestMod;
+import com.felpslipe.testmod.block.ModBlocks;
 import com.felpslipe.testmod.item.ModItems;
 import com.felpslipe.testmod.util.ModTags;
 import net.minecraft.core.HolderLookup;
@@ -41,6 +42,13 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.SMILEY_CHESTPLATE.get())
                 .add(ModItems.SMILEY_LEGGINGS.get())
                 .add(ModItems.SMILEY_BOOTS.get());
+        this.tag(ItemTags.LOGS_THAT_BURN)
+                .add(ModBlocks.VIRAL_LOG.get().asItem())
+                .add(ModBlocks.STRIPPED_VIRAL_LOG.get().asItem())
+                .add(ModBlocks.VIRAL_WOOD.get().asItem())
+                .add(ModBlocks.STRIPPED_VIRAL_WOOD.get().asItem());
+        this.tag(ItemTags.PLANKS)
+                .add(ModBlocks.VIRAL_PLANKS.get().asItem());
 
     }
 }
