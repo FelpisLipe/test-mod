@@ -38,6 +38,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SMILEY_LEGGINGS);
                         output.accept(ModItems.SMILEY_BOOTS);
                         output.accept(ModItems.FRANGO_SEEDS);
+                        output.accept(ModItems.CABELA_SPAWN_EGG);
                     })
                     .build());
 

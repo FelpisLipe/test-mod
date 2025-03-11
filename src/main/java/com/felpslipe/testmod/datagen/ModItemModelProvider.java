@@ -65,6 +65,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         basicItem(ModItems.FRANGO_SEEDS.get());
         saplingItem(ModBlocks.VIRAL_SAPLING);
+        withExistingParent(ModItems.CABELA_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
 
     }
 

@@ -2,12 +2,14 @@ package com.felpslipe.testmod.item;
 
 import com.felpslipe.testmod.TestMod;
 import com.felpslipe.testmod.block.ModBlocks;
+import com.felpslipe.testmod.entity.ModEntities;
 import com.felpslipe.testmod.item.custom.HammerItem;
 import com.felpslipe.testmod.item.custom.ThirtyItem;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -81,6 +83,9 @@ public class ModItems {
                     new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(19))));
         public static final DeferredItem<Item> FRANGO_SEEDS = ITEMS.register("frango_seeds",
                 () -> new ItemNameBlockItem(ModBlocks.FRANGO_CROP.get(), new Item.Properties()));
+        public static final DeferredItem<Item> CABELA_SPAWN_EGG = ITEMS.register("cabela_spawn_egg",
+                () -> new DeferredSpawnEggItem(ModEntities.CABELA, 0xf7eada, 0x2a0c06,
+                        new Item.Properties()));
 
 
     // Registering items

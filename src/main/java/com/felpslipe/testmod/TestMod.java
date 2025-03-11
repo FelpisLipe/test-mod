@@ -1,10 +1,13 @@
 package com.felpslipe.testmod;
 
 import com.felpslipe.testmod.block.ModBlocks;
+import com.felpslipe.testmod.entity.ModEntities;
+import com.felpslipe.testmod.entity.client.CabelaRenderer;
 import com.felpslipe.testmod.hud.Hud;
 import com.felpslipe.testmod.item.ModCreativeModeTabs;
 import com.felpslipe.testmod.item.ModItems;
 import com.felpslipe.testmod.sound.ModSounds;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import org.slf4j.Logger;
 
@@ -61,6 +64,9 @@ public class TestMod {
         // Sound register
         ModSounds.register(modEventBus);
 
+        // Entities register
+        ModEntities.register(modEventBus);
+
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
@@ -99,6 +105,7 @@ public class TestMod {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
+            EntityRenderers.register(ModEntities.CABELA.get(), CabelaRenderer::new);
 
         }
     }

@@ -16,6 +16,7 @@
   "item.testmod.smiley_leggings": "Smiley Leggings",
   "item.testmod.smiley_boots": "Smiley Boots",
   "item.testmod.frango_seeds": "Frango Seeds",
+  "item.testmod.cabela_spawn_egg": "Cabela Spawn Egg",
 
   "block.testmod.troll_block": "Troll Block",
   "block.testmod.troll_stairs": "Troll Stairs",
@@ -56,5 +57,7 @@
   "sounds.testmod.shady_block_step": "Footsteps",
   "sounds.testmod.shady_block_place": "Block placed",
   "sounds.testmod.shady_block_break": "Block broken",
-  "sounds.testmod.shady_block_fall": "Something fell"
+  "sounds.testmod.shady_block_fall": "Something fell",
+
+  "entity.testmod.cabela": "Cabela"
 }
