@@ -3,9 +3,7 @@ package com.felpslipe.testmod.entity.custom;
 import com.felpslipe.testmod.entity.ModEntities;
 import com.felpslipe.testmod.item.ModItems;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.AnimationState;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -45,6 +43,11 @@ public class CabelaEntity extends Animal {
     @Override
     public boolean isFood(ItemStack stack) {
         return stack.is(ModItems.FRANGO);
+    }
+
+    @Override
+    public float getAgeScale() {
+        return this.isBaby() ? 0.6f : 1f;
     }
 
     @Nullable
