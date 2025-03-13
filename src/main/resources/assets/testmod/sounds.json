@@ -35,5 +35,23 @@
     "sounds": [
       "testmod:shady_block_fall"
     ]
+  },
+  "cabela_ambient": {
+    "subtitle": "sounds.testmod.cabela_ambient",
+    "sounds": [
+      "testmod:cabela_ambient"
+    ]
+  },
+  "cabela_hurt": {
+    "subtitle": "sounds.testmod.cabela_hurt",
+    "sounds": [
+      "testmod:cabela_hurt"
+    ]
+  },
+  "cabela_death": {
+    "subtitle": "sounds.testmod.cabela_death",
+    "sounds": [
+      "testmod:cabela_death"
+    ]
   }
 }

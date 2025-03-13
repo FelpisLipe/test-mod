@@ -1,14 +1,23 @@
 package com.felpslipe.testmod.entity.client;
 
 import com.felpslipe.testmod.TestMod;
+import com.felpslipe.testmod.entity.CabelaVariant;
 import com.felpslipe.testmod.entity.custom.CabelaEntity;
+import com.google.common.collect.Maps;
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.Util;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 
+import java.util.Map;
+
 public class CabelaRenderer extends MobRenderer<CabelaEntity, CabelaModel<CabelaEntity>> {
+    private static final Map<CabelaVariant, ResourceLocation> LOCATION_BY_VARIANT = Util.make(Maps.newEnumMap(CabelaVariant.class), map -> {
+        map.put(CabelaVariant.NORMAL, ResourceLocation.fromNamespaceAndPath(TestMod.MOD_ID, "textures/entity/cabela/cabela_normal.png"));
+        map.put(CabelaVariant.CRY, ResourceLocation.fromNamespaceAndPath(TestMod.MOD_ID, "textures/entity/cabela/cabela_cry.png"));
+    });
 
 
     public CabelaRenderer(EntityRendererProvider.Context context) {
@@ -17,7 +26,7 @@ public class CabelaRenderer extends MobRenderer<CabelaEntity, CabelaModel<Cabela
 
     @Override
     public ResourceLocation getTextureLocation(CabelaEntity entity) {
-        return ResourceLocation.fromNamespaceAndPath(TestMod.MOD_ID, "textures/entity/cabela/cabela_normal.png");
+        return LOCATION_BY_VARIANT.get(entity.getVariant());
     }
 
     @Override

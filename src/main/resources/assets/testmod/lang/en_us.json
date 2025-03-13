@@ -58,6 +58,9 @@
   "sounds.testmod.shady_block_place": "Block placed",
   "sounds.testmod.shady_block_break": "Block broken",
   "sounds.testmod.shady_block_fall": "Something fell",
+  "sounds.testmod.cabela_ambient": "Cabela cabela's",
+  "sounds.testmod.cabela_hurt": "Cabela hurts",
+  "sounds.testmod.cabela_death": "Cabela dies",
 
   "entity.testmod.cabela": "Cabela"
 }

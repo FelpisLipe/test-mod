@@ -19,6 +19,9 @@ public class ModSounds {
     public static final Supplier<SoundEvent> SHADY_BLOCK_STEP = registerSoundEvent("shady_block_step");
     public static final Supplier<SoundEvent> SHADY_BLOCK_HIT = registerSoundEvent("shady_block_hit");
     public static final Supplier<SoundEvent> SHADY_BLOCK_FALL = registerSoundEvent("shady_block_fall");
+    public static final Supplier<SoundEvent> CABELA_AMBIENT = registerSoundEvent("cabela_ambient");
+    public static final Supplier<SoundEvent> CABELA_HURT = registerSoundEvent("cabela_hurt");
+    public static final Supplier<SoundEvent> CABELA_DEATH = registerSoundEvent("cabela_death");
 
     public static final DeferredSoundType SHADY_BLOCK_SOUNDS= new DeferredSoundType(1f, 1f, ModSounds.SHADY_BLOCK_BREAK, ModSounds.SHADY_BLOCK_PLACE,
             ModSounds.SHADY_BLOCK_STEP, ModSounds.SHADY_BLOCK_HIT, ModSounds.SHADY_BLOCK_FALL);
