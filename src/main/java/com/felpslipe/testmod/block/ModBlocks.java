@@ -1,10 +1,7 @@
 package com.felpslipe.testmod.block;
 
 import com.felpslipe.testmod.TestMod;
-import com.felpslipe.testmod.block.custom.FrangoCropBlock;
-import com.felpslipe.testmod.block.custom.ModFlammableRotatedPillarBlock;
-import com.felpslipe.testmod.block.custom.ShadyBlock;
-import com.felpslipe.testmod.block.custom.ThirtyLampBlock;
+import com.felpslipe.testmod.block.custom.*;
 import com.felpslipe.testmod.item.ModItems;
 import com.felpslipe.testmod.sound.ModSounds;
 import com.felpslipe.testmod.worldgen.tree.ModTreeGrowers;

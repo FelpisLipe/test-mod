@@ -33,7 +33,8 @@ public class CabelaRenderer extends MobRenderer<CabelaEntity, CabelaModel<Cabela
     public void render(CabelaEntity entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         if(entity.isBaby()) {
             poseStack.pushPose();
-            poseStack.scale(0.6f, 0.6f, 0.6f);
+            float ageScale = entity.getAgeScale();
+            poseStack.scale(ageScale, ageScale, ageScale);
         }
         super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
         if(entity.isBaby()) {
