@@ -6,6 +6,7 @@ import com.felpslipe.testmod.entity.ModEntities;
 import com.felpslipe.testmod.item.custom.HammerItem;
 import com.felpslipe.testmod.item.custom.ThirtyItem;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
@@ -37,10 +38,9 @@ public class ModItems {
             () -> new Item(new Item.Properties().food(ModFoodProperties.FRANGO)) {
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-                    if(Screen.hasShiftDown()) {
+                    if (Screen.hasShiftDown()) {
                         tooltipComponents.add(Component.translatable("tooltip.testmod.frango.shift_down"));
-                    }
-                    else {
+                    } else {
                         tooltipComponents.add(Component.translatable("tooltip.testmod.frango"));
                     }
                     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
@@ -72,20 +72,26 @@ public class ModItems {
     public static final DeferredItem<ArmorItem> SMILEY_HELMET = ITEMS.register("smiley_helmet",
             () -> new ArmorItem(ModArmorMaterials.SMILEY_ARMOR_MATERIAL, ArmorItem.Type.HELMET,
                     new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(19))));
-        public static final DeferredItem<ArmorItem> SMILEY_CHESTPLATE = ITEMS.register("smiley_chestplate",
+    public static final DeferredItem<ArmorItem> SMILEY_CHESTPLATE = ITEMS.register("smiley_chestplate",
             () -> new ArmorItem(ModArmorMaterials.SMILEY_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE,
                     new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(19))));
-        public static final DeferredItem<ArmorItem> SMILEY_LEGGINGS = ITEMS.register("smiley_leggings",
+    public static final DeferredItem<ArmorItem> SMILEY_LEGGINGS = ITEMS.register("smiley_leggings",
             () -> new ArmorItem(ModArmorMaterials.SMILEY_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS,
                     new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(19))));
-        public static final DeferredItem<ArmorItem> SMILEY_BOOTS = ITEMS.register("smiley_boots",
+    public static final DeferredItem<ArmorItem> SMILEY_BOOTS = ITEMS.register("smiley_boots",
             () -> new ArmorItem(ModArmorMaterials.SMILEY_ARMOR_MATERIAL, ArmorItem.Type.BOOTS,
                     new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(19))));
-        public static final DeferredItem<Item> FRANGO_SEEDS = ITEMS.register("frango_seeds",
-                () -> new ItemNameBlockItem(ModBlocks.FRANGO_CROP.get(), new Item.Properties()));
-        public static final DeferredItem<Item> CABELA_SPAWN_EGG = ITEMS.register("cabela_spawn_egg",
-                () -> new DeferredSpawnEggItem(ModEntities.CABELA, 0xf7eada, 0x2a0c06,
-                        new Item.Properties()));
+    public static final DeferredItem<Item> FRANGO_SEEDS = ITEMS.register("frango_seeds",
+            () -> new ItemNameBlockItem(ModBlocks.FRANGO_CROP.get(), new Item.Properties()));
+    public static final DeferredItem<Item> CABELA_SPAWN_EGG = ITEMS.register("cabela_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.CABELA, 0xf7eada, 0x2a0c06,
+                    new Item.Properties()));
+    public static final DeferredItem<Item> CABELA_HEAD = ITEMS.register("cabela_head",
+            () -> new StandingAndWallBlockItem(ModBlocks.CABELA_HEAD.get(), ModBlocks.CABELA_WALL_HEAD.get(),
+                    new Item.Properties().rarity(Rarity.UNCOMMON), Direction.DOWN));
+    public static final DeferredItem<Item> CABELA_CRY_HEAD = ITEMS.register("cabela_cry_head",
+            () -> new StandingAndWallBlockItem(ModBlocks.CABELA_CRY_HEAD.get(), ModBlocks.CABELA_CRY_WALL_HEAD.get(),
+                    new Item.Properties().rarity(Rarity.UNCOMMON), Direction.DOWN));
 
 
     // Registering items

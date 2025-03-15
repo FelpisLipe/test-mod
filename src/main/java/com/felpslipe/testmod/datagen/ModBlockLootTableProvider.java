@@ -68,9 +68,10 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.VIRAL_SAPLING.get());
         this.add(ModBlocks.VIRAL_LEAVES.get(), block -> createLeavesDrops(block, ModBlocks.VIRAL_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
 
-
-
-
+        dropOther(ModBlocks.CABELA_HEAD.get(), ModItems.CABELA_HEAD.get());
+        dropOther(ModBlocks.CABELA_WALL_HEAD.get(), ModItems.CABELA_HEAD.get());
+        dropOther(ModBlocks.CABELA_CRY_HEAD.get(), ModItems.CABELA_CRY_HEAD.get());
+        dropOther(ModBlocks.CABELA_CRY_WALL_HEAD.get(), ModItems.CABELA_CRY_HEAD.get());
     }
 
     protected LootTable.Builder createMultipleOreDrops(Block pBlock, Item item, float minDrops, float maxDrops) {

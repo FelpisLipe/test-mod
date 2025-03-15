@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:air"
+          "name": "testmod:cabela_cry_head"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "testmod:blocks/viral_sapling"
+  "random_sequence": "testmod:blocks/cabela_cry_head"
 }

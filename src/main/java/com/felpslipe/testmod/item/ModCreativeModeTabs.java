@@ -6,7 +6,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -72,6 +71,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.VIRAL_PLANKS);
                         output.accept(ModBlocks.VIRAL_SAPLING);
                         output.accept(ModBlocks.VIRAL_LEAVES);
+                        output.accept(ModItems.CABELA_HEAD);
+                        output.accept(ModItems.CABELA_CRY_HEAD);
                     })
                     .build());
 
