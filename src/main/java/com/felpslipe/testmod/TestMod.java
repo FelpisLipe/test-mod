@@ -3,6 +3,7 @@ package com.felpslipe.testmod;
 import com.felpslipe.testmod.block.ModBlocks;
 import com.felpslipe.testmod.entity.ModEntities;
 import com.felpslipe.testmod.entity.client.CabelaRenderer;
+import com.felpslipe.testmod.entity.client.ToiletRenderer;
 import com.felpslipe.testmod.hud.Hud;
 import com.felpslipe.testmod.item.ModCreativeModeTabs;
 import com.felpslipe.testmod.item.ModItems;
@@ -106,6 +107,7 @@ public class TestMod {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(ModEntities.CABELA.get(), CabelaRenderer::new);
+            EntityRenderers.register(ModEntities.TOILET_ENTITY.get(), ToiletRenderer::new);
 
         }
     }
