@@ -166,6 +166,8 @@ public class ModBlocks {
             });
     public static final DeferredBlock<Block> VIRAL_SAPLING = registerBlock("viral_sapling",
             () -> new SaplingBlock(ModTreeGrowers.VIRAL, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)));
+    public static final DeferredBlock<Block> TOILET = registerBlock("toilet",
+            () -> new ToiletBlock(BlockBehaviour.Properties.of().noOcclusion()));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);

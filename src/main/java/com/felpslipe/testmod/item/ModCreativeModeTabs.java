@@ -72,6 +72,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.VIRAL_PLANKS);
                         output.accept(ModBlocks.VIRAL_SAPLING);
                         output.accept(ModBlocks.VIRAL_LEAVES);
+                        output.accept(ModBlocks.TOILET);
                     })
                     .build());
 
