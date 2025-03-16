@@ -132,7 +132,12 @@ public class CabelaEntity extends Animal {
 
     @Override
     protected @Nullable SoundEvent getAmbientSound() {
-        return ModSounds.CABELA_AMBIENT.get();
+        if(this.getTypeVariant() == 1) {
+            return ModSounds.CABELA_CRY_AMBIENT.get();
+        }
+        else {
+            return ModSounds.CABELA_AMBIENT.get();
+        }
     }
 
     @Override

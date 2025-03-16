@@ -53,5 +53,12 @@
     "sounds": [
       "testmod:cabela_death"
     ]
+  },
+  "cabela_cry_ambient": {
+    "subtitle": "sounds.testmod.cabela_ambient",
+    "sounds": [
+      "testmod:cabela_cry_ambient",
+      "testmod:cabela_ambient"
+    ]
   }
 }

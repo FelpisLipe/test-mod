@@ -20,6 +20,7 @@ public class ModSounds {
     public static final Supplier<SoundEvent> SHADY_BLOCK_HIT = registerSoundEvent("shady_block_hit");
     public static final Supplier<SoundEvent> SHADY_BLOCK_FALL = registerSoundEvent("shady_block_fall");
     public static final Supplier<SoundEvent> CABELA_AMBIENT = registerSoundEvent("cabela_ambient");
+    public static final Supplier<SoundEvent> CABELA_CRY_AMBIENT = registerSoundEvent("cabela_cry_ambient");
     public static final Supplier<SoundEvent> CABELA_HURT = registerSoundEvent("cabela_hurt");
     public static final Supplier<SoundEvent> CABELA_DEATH = registerSoundEvent("cabela_death");
 
