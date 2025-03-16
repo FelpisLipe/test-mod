@@ -66,6 +66,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.FRANGO_SEEDS.get());
         saplingItem(ModBlocks.VIRAL_SAPLING);
         withExistingParent(ModItems.CABELA_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        skullItem(ModItems.CABELA_HEAD);
+        skullItem(ModItems.CABELA_CRY_HEAD);
 
     }
 
@@ -137,6 +139,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         return withExistingParent(item.getId().getPath(),
                 ResourceLocation.parse("item/handheld")).texture("layer0",
                 ResourceLocation.fromNamespaceAndPath(TestMod.MOD_ID,"item/" + item.getId().getPath()));
+    }
+    public void skullItem(DeferredItem<?> item) {
+        this.withExistingParent(item.getId().getPath(), mcLoc("item/template_skull"));
     }
 
 }

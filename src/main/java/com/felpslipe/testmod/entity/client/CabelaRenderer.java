@@ -1,6 +1,5 @@
 package com.felpslipe.testmod.entity.client;
 
-import com.felpslipe.testmod.TestMod;
 import com.felpslipe.testmod.entity.CabelaVariant;
 import com.felpslipe.testmod.entity.custom.CabelaEntity;
 import com.google.common.collect.Maps;
@@ -15,8 +14,8 @@ import java.util.Map;
 
 public class CabelaRenderer extends MobRenderer<CabelaEntity, CabelaModel<CabelaEntity>> {
     private static final Map<CabelaVariant, ResourceLocation> LOCATION_BY_VARIANT = Util.make(Maps.newEnumMap(CabelaVariant.class), map -> {
-        map.put(CabelaVariant.NORMAL, ResourceLocation.fromNamespaceAndPath(TestMod.MOD_ID, "textures/entity/cabela/cabela_normal.png"));
-        map.put(CabelaVariant.CRY, ResourceLocation.fromNamespaceAndPath(TestMod.MOD_ID, "textures/entity/cabela/cabela_cry.png"));
+        map.put(CabelaVariant.NORMAL, CabelaVariant.NORMAL.getResourceLocation());
+        map.put(CabelaVariant.CRY, CabelaVariant.CRY.getResourceLocation());
     });
 
 
@@ -31,14 +30,10 @@ public class CabelaRenderer extends MobRenderer<CabelaEntity, CabelaModel<Cabela
 
     @Override
     public void render(CabelaEntity entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
-        if(entity.isBaby()) {
-            poseStack.pushPose();
-            float ageScale = entity.getAgeScale();
-            poseStack.scale(ageScale, ageScale, ageScale);
-        }
+        poseStack.pushPose();
+        float ageScale = entity.getAgeScale();
+        poseStack.scale(ageScale, ageScale, ageScale);
         super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
-        if(entity.isBaby()) {
-            poseStack.popPose();
-        }
+        poseStack.popPose();
     }
 }

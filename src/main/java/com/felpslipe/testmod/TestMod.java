@@ -1,6 +1,9 @@
 package com.felpslipe.testmod;
 
 import com.felpslipe.testmod.block.ModBlocks;
+import com.felpslipe.testmod.block.client.CabelaSkullModel;
+import com.felpslipe.testmod.block.custom.CabelaSkullBlock;
+import com.felpslipe.testmod.entity.CabelaVariant;
 import com.felpslipe.testmod.entity.ModEntities;
 import com.felpslipe.testmod.entity.client.CabelaRenderer;
 import com.felpslipe.testmod.entity.client.ToiletRenderer;
@@ -8,8 +11,13 @@ import com.felpslipe.testmod.hud.Hud;
 import com.felpslipe.testmod.item.ModCreativeModeTabs;
 import com.felpslipe.testmod.item.ModItems;
 import com.felpslipe.testmod.sound.ModSounds;
+import com.google.common.collect.ImmutableMap;
+import net.minecraft.client.renderer.blockentity.SkullBlockRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.level.block.SkullBlock;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -107,8 +115,25 @@ public class TestMod {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(ModEntities.CABELA.get(), CabelaRenderer::new);
+            event.enqueueWork(() -> {
+                ImmutableMap.Builder<SkullBlock.Type, ResourceLocation> builder = ImmutableMap.builder();
+                builder.put(CabelaVariant.NORMAL, CabelaVariant.NORMAL.getResourceLocation());
+                builder.put(CabelaVariant.CRY, CabelaVariant.CRY.getResourceLocation());
+                SkullBlockRenderer.SKIN_BY_TYPE.putAll(builder.build());
+            });
             EntityRenderers.register(ModEntities.TOILET_ENTITY.get(), ToiletRenderer::new);
 
+        }
+
+        @SubscribeEvent
+        public static void onRegisterLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
+            event.registerLayerDefinition(CabelaSkullModel.CABELA_HEAD, CabelaSkullModel::createCabelaHeadLayer);
+        }
+
+        @SubscribeEvent
+        public static void onCreateSkullModel(EntityRenderersEvent.CreateSkullModels event) {
+            event.registerSkullModel(CabelaVariant.NORMAL, new CabelaSkullModel(event.getEntityModelSet().bakeLayer(CabelaSkullModel.CABELA_HEAD)));
+            event.registerSkullModel(CabelaVariant.CRY, new CabelaSkullModel(event.getEntityModelSet().bakeLayer(CabelaSkullModel.CABELA_HEAD)));
         }
     }
 }

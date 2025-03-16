@@ -49,6 +49,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModBlocks.STRIPPED_VIRAL_WOOD.get().asItem());
         this.tag(ItemTags.PLANKS)
                 .add(ModBlocks.VIRAL_PLANKS.get().asItem());
+        tag(ItemTags.SKULLS)
+                .add(ModItems.CABELA_HEAD.get().asItem())
+                .add(ModItems.CABELA_CRY_HEAD.get().asItem());
 
     }
 }
