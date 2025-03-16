@@ -1,6 +1,5 @@
 package com.felpslipe.testmod.entity.client;
 
-import com.felpslipe.testmod.TestMod;
 import com.felpslipe.testmod.entity.CabelaVariant;
 import com.felpslipe.testmod.entity.custom.CabelaEntity;
 import com.google.common.collect.Maps;
@@ -15,8 +14,8 @@ import java.util.Map;
 
 public class CabelaRenderer extends MobRenderer<CabelaEntity, CabelaModel<CabelaEntity>> {
     private static final Map<CabelaVariant, ResourceLocation> LOCATION_BY_VARIANT = Util.make(Maps.newEnumMap(CabelaVariant.class), map -> {
-        map.put(CabelaVariant.NORMAL, ResourceLocation.fromNamespaceAndPath(TestMod.MOD_ID, "textures/entity/cabela/cabela_normal.png"));
-        map.put(CabelaVariant.CRY, ResourceLocation.fromNamespaceAndPath(TestMod.MOD_ID, "textures/entity/cabela/cabela_cry.png"));
+        map.put(CabelaVariant.NORMAL, CabelaVariant.NORMAL.getResourceLocation());
+        map.put(CabelaVariant.CRY, CabelaVariant.CRY.getResourceLocation());
     });
 
 

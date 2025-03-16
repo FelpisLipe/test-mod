@@ -3,6 +3,7 @@ package com.felpslipe.testmod;
 import com.felpslipe.testmod.block.ModBlocks;
 import com.felpslipe.testmod.block.client.CabelaSkullModel;
 import com.felpslipe.testmod.block.custom.CabelaSkullBlock;
+import com.felpslipe.testmod.entity.CabelaVariant;
 import com.felpslipe.testmod.entity.ModEntities;
 import com.felpslipe.testmod.entity.client.CabelaRenderer;
 import com.felpslipe.testmod.hud.Hud;
@@ -115,8 +116,8 @@ public class TestMod {
             EntityRenderers.register(ModEntities.CABELA.get(), CabelaRenderer::new);
             event.enqueueWork(() -> {
                 ImmutableMap.Builder<SkullBlock.Type, ResourceLocation> builder = ImmutableMap.builder();
-                builder.put(CabelaSkullBlock.Types.NORMAL, ResourceLocation.fromNamespaceAndPath(TestMod.MOD_ID, "textures/entity/cabela/cabela_normal.png"));
-                builder.put(CabelaSkullBlock.Types.CRY, ResourceLocation.fromNamespaceAndPath(TestMod.MOD_ID, "textures/entity/cabela/cabela_cry.png"));
+                builder.put(CabelaVariant.NORMAL, CabelaVariant.NORMAL.getResourceLocation());
+                builder.put(CabelaVariant.CRY, CabelaVariant.CRY.getResourceLocation());
                 SkullBlockRenderer.SKIN_BY_TYPE.putAll(builder.build());
             });
 
@@ -129,8 +130,8 @@ public class TestMod {
 
         @SubscribeEvent
         public static void onCreateSkullModel(EntityRenderersEvent.CreateSkullModels event) {
-            event.registerSkullModel(CabelaSkullBlock.Types.NORMAL, new CabelaSkullModel(event.getEntityModelSet().bakeLayer(CabelaSkullModel.CABELA_HEAD)));
-            event.registerSkullModel(CabelaSkullBlock.Types.CRY, new CabelaSkullModel(event.getEntityModelSet().bakeLayer(CabelaSkullModel.CABELA_HEAD)));
+            event.registerSkullModel(CabelaVariant.NORMAL, new CabelaSkullModel(event.getEntityModelSet().bakeLayer(CabelaSkullModel.CABELA_HEAD)));
+            event.registerSkullModel(CabelaVariant.CRY, new CabelaSkullModel(event.getEntityModelSet().bakeLayer(CabelaSkullModel.CABELA_HEAD)));
         }
     }
 }

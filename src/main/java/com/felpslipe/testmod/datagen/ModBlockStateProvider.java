@@ -1,6 +1,5 @@
 package com.felpslipe.testmod.datagen;
 
-import com.felpslipe.testmod.Config;
 import com.felpslipe.testmod.TestMod;
 import com.felpslipe.testmod.block.ModBlocks;
 import com.felpslipe.testmod.block.custom.FrangoCropBlock;
@@ -8,6 +7,7 @@ import com.felpslipe.testmod.block.custom.ThirtyLampBlock;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.AbstractSkullBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
@@ -66,7 +66,16 @@ public class ModBlockStateProvider extends BlockStateProvider {
         saplingBlock(ModBlocks.VIRAL_SAPLING);
         leavesBlock(ModBlocks.VIRAL_LEAVES);
 
+        for (DeferredBlock<? extends AbstractSkullBlock> skull : ModBlocks.SKULLS) {
+            skullBlock(skull);
+        }
+    }
 
+    private void skullBlock(DeferredBlock<?> deferredBlock) {
+        getVariantBuilder(deferredBlock.get())
+                .partialState()
+                .setModels(new ConfiguredModel(models().getExistingFile(
+                        ResourceLocation.withDefaultNamespace("block/skull"))));
     }
 
     private void saplingBlock(DeferredBlock<Block> blockRegistryObject) {

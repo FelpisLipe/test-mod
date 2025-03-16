@@ -56,21 +56,4 @@ public class CabelaSkullBlock extends SkullBlock {
     public BlockState mirror(BlockState blockState, Mirror mirror) {
         return blockState.setValue(ROTATION, mirror.mirror(blockState.getValue(ROTATION), 16));
     }
-
-    public enum Types implements SkullBlock.Type {
-        NORMAL(TestMod.MOD_ID + ":cabela"),
-        CRY(TestMod.MOD_ID + ":cabela_cry");
-
-        private final String name;
-
-        Types(String name) {
-            this.name = name;
-            TYPES.put(name, this);
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.name;
-        }
-    }
 }

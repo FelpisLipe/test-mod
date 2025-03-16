@@ -2,9 +2,12 @@ package com.felpslipe.testmod.block;
 
 import com.felpslipe.testmod.TestMod;
 import com.felpslipe.testmod.block.custom.*;
+import com.felpslipe.testmod.entity.CabelaVariant;
 import com.felpslipe.testmod.item.ModItems;
 import com.felpslipe.testmod.sound.ModSounds;
 import com.felpslipe.testmod.worldgen.tree.ModTreeGrowers;
+import com.google.common.collect.ImmutableSet;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -12,19 +15,26 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 import java.util.function.Supplier;
 
 public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(TestMod.MOD_ID);
+    public static final List<DeferredBlock<? extends AbstractSkullBlock>> SKULLS = new ArrayList<>();
 
     // Registering new block (troll block)
     public static final DeferredBlock<Block> TROLL_BLOCK = registerBlock("troll_block",
@@ -167,19 +177,25 @@ public class ModBlocks {
     public static final DeferredBlock<Block> VIRAL_SAPLING = registerBlock("viral_sapling",
             () -> new SaplingBlock(ModTreeGrowers.VIRAL, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)));
 
-    public static final DeferredBlock<CabelaSkullBlock> CABELA_HEAD = BLOCKS.register("cabela_head",
-            () -> new CabelaSkullBlock(CabelaSkullBlock.Types.NORMAL, BlockBehaviour.Properties.of().strength(1.0F).pushReaction(PushReaction.DESTROY))
+    public static final DeferredBlock<CabelaSkullBlock> CABELA_HEAD = registerSkullBlock("cabela_head",
+            () -> new CabelaSkullBlock(CabelaVariant.NORMAL, BlockBehaviour.Properties.of().strength(1.0F).pushReaction(PushReaction.DESTROY))
     );
-    public static final DeferredBlock<CabelaWallSkullBlock> CABELA_WALL_HEAD = BLOCKS.register("cabela_wall_head",
-            () -> new CabelaWallSkullBlock(CabelaSkullBlock.Types.NORMAL, BlockBehaviour.Properties.of().strength(1.0F).pushReaction(PushReaction.DESTROY))
+    public static final DeferredBlock<CabelaWallSkullBlock> CABELA_WALL_HEAD = registerSkullBlock("cabela_wall_head",
+            () -> new CabelaWallSkullBlock(CabelaVariant.NORMAL, BlockBehaviour.Properties.of().strength(1.0F).pushReaction(PushReaction.DESTROY))
     );
 
-    public static final DeferredBlock<CabelaSkullBlock> CABELA_CRY_HEAD = BLOCKS.register("cabela_cry_head",
-            () -> new CabelaSkullBlock(CabelaSkullBlock.Types.CRY, BlockBehaviour.Properties.of().strength(1.0F).pushReaction(PushReaction.DESTROY))
+    public static final DeferredBlock<CabelaSkullBlock> CABELA_CRY_HEAD = registerSkullBlock("cabela_cry_head",
+            () -> new CabelaSkullBlock(CabelaVariant.CRY, BlockBehaviour.Properties.of().strength(1.0F).pushReaction(PushReaction.DESTROY))
     );
-    public static final DeferredBlock<CabelaWallSkullBlock> CABELA_CRY_WALL_HEAD = BLOCKS.register("cabela_cry_wall_head",
-            () -> new CabelaWallSkullBlock(CabelaSkullBlock.Types.CRY, BlockBehaviour.Properties.of().strength(1.0F).pushReaction(PushReaction.DESTROY))
+    public static final DeferredBlock<CabelaWallSkullBlock> CABELA_CRY_WALL_HEAD = registerSkullBlock("cabela_cry_wall_head",
+            () -> new CabelaWallSkullBlock(CabelaVariant.CRY, BlockBehaviour.Properties.of().strength(1.0F).pushReaction(PushReaction.DESTROY))
     );
+
+    private static <T extends AbstractSkullBlock> DeferredBlock<T> registerSkullBlock(String name, Supplier<T> block) {
+        DeferredBlock<T> toReturn = BLOCKS.register(name, block);
+        SKULLS.add(toReturn);
+        return toReturn;
+    }
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
@@ -194,6 +210,25 @@ public class ModBlocks {
     // Registering blocks
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
+
+        eventBus.addListener(ModBlocks::onCommonSetup);
+    }
+
+    private static void onCommonSetup(final FMLCommonSetupEvent event) {
+        setValidSkullBlocks();
+    }
+
+    private static void setValidSkullBlocks() {
+        try {
+            Field validBlocks = BlockEntityType.class.getDeclaredField("validBlocks");
+            validBlocks.setAccessible(true);
+            @SuppressWarnings("unchecked")
+            Set<Block> skullValidBlocks = new ObjectOpenHashSet<>((Set<Block>) validBlocks.get(BlockEntityType.SKULL));
+            skullValidBlocks.addAll(SKULLS.stream().map(DeferredBlock::get).collect(ImmutableSet.toImmutableSet()));
+            validBlocks.set(BlockEntityType.SKULL, skullValidBlocks);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to set validBlocks for Skull block entity type", e);
+        }
     }
 
 }
