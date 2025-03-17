@@ -4,6 +4,7 @@ import com.felpslipe.testmod.block.ModBlocks;
 import com.felpslipe.testmod.block.client.CabelaSkullModel;
 import com.felpslipe.testmod.block.custom.CabelaSkullBlock;
 import com.felpslipe.testmod.block.entity.ModBlockEntities;
+import com.felpslipe.testmod.block.entity.renderer.PedestalBlockEntityRenderer;
 import com.felpslipe.testmod.entity.CabelaVariant;
 import com.felpslipe.testmod.entity.ModEntities;
 import com.felpslipe.testmod.entity.client.CabelaRenderer;
@@ -140,6 +141,11 @@ public class TestMod {
         public static void onCreateSkullModel(EntityRenderersEvent.CreateSkullModels event) {
             event.registerSkullModel(CabelaVariant.NORMAL, new CabelaSkullModel(event.getEntityModelSet().bakeLayer(CabelaSkullModel.CABELA_HEAD)));
             event.registerSkullModel(CabelaVariant.CRY, new CabelaSkullModel(event.getEntityModelSet().bakeLayer(CabelaSkullModel.CABELA_HEAD)));
+        }
+
+        @SubscribeEvent
+        public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
+            event.registerBlockEntityRenderer(ModBlockEntities.PEDESTAL_BE.get(), PedestalBlockEntityRenderer::new);
         }
     }
 }

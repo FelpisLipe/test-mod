@@ -31,8 +31,18 @@ public class PedestalBlockEntity extends BlockEntity {
         }
     };
 
+    private float rotation;
+
     public PedestalBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModBlockEntities.PEDESTAL_BE.get(), pos, blockState);
+    }
+
+    public float getRenderingRotation() {
+        rotation += 0.5f;
+        if(rotation >= 360) {
+            rotation = 0;
+        }
+        return rotation;
     }
 
     public void clearContents() {
@@ -67,7 +77,7 @@ public class PedestalBlockEntity extends BlockEntity {
     }
 
     @Override
-    public CompoundTag getUpdateTag(HolderLookup.Provider pRegistries) {
-        return saveWithoutMetadata(pRegistries);
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        return saveWithoutMetadata(registries);
     }
 }
