@@ -67,6 +67,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.VIRAL_PLANKS.get());
         this.dropSelf(ModBlocks.VIRAL_SAPLING.get());
         this.add(ModBlocks.VIRAL_LEAVES.get(), block -> createLeavesDrops(block, ModBlocks.VIRAL_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        dropSelf(ModBlocks.TOILET.get());
 
         dropOther(ModBlocks.CABELA_HEAD.get(), ModItems.CABELA_HEAD.get());
         dropOther(ModBlocks.CABELA_WALL_HEAD.get(), ModItems.CABELA_HEAD.get());

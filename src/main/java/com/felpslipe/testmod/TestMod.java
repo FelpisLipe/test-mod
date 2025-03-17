@@ -3,6 +3,7 @@ package com.felpslipe.testmod;
 import com.felpslipe.testmod.block.ModBlocks;
 import com.felpslipe.testmod.block.client.CabelaSkullModel;
 import com.felpslipe.testmod.block.custom.CabelaSkullBlock;
+import com.felpslipe.testmod.block.entity.ModBlockEntities;
 import com.felpslipe.testmod.entity.CabelaVariant;
 import com.felpslipe.testmod.entity.ModEntities;
 import com.felpslipe.testmod.entity.client.CabelaRenderer;
@@ -76,6 +77,9 @@ public class TestMod {
         // Entities register
         ModEntities.register(modEventBus);
 
+        // Block Entities
+        ModBlockEntities.register(modEventBus);
+
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
@@ -114,7 +118,9 @@ public class TestMod {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            EntityRenderers.register(ModEntities.CABELA.get(), CabelaRenderer::new);
+            EntityRenderers.register(ModEntities.CABELA.get(), CabelaRenderer::new);            EntityRenderers.register(ModEntities.TOILET_ENTITY.get(), ToiletRenderer::new);
+
+
             event.enqueueWork(() -> {
                 ImmutableMap.Builder<SkullBlock.Type, ResourceLocation> builder = ImmutableMap.builder();
                 builder.put(CabelaVariant.NORMAL, CabelaVariant.NORMAL.getResourceLocation());

@@ -193,6 +193,9 @@ public class ModBlocks {
             () -> new CabelaWallSkullBlock(CabelaVariant.CRY, BlockBehaviour.Properties.of().strength(1.0F).pushReaction(PushReaction.DESTROY))
     );
 
+    public static final DeferredBlock<Block> PEDESTAL = registerBlock("pedestal",
+            () -> new PedestalBlock(BlockBehaviour.Properties.of().noOcclusion()));
+
     private static <T extends AbstractSkullBlock> DeferredBlock<T> registerSkullBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
         SKULLS.add(toReturn);
