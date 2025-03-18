@@ -12,6 +12,8 @@ import com.felpslipe.testmod.entity.client.ToiletRenderer;
 import com.felpslipe.testmod.hud.Hud;
 import com.felpslipe.testmod.item.ModCreativeModeTabs;
 import com.felpslipe.testmod.item.ModItems;
+import com.felpslipe.testmod.screen.ModMenuTypes;
+import com.felpslipe.testmod.screen.custom.PedestalScreen;
 import com.felpslipe.testmod.sound.ModSounds;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.client.renderer.blockentity.SkullBlockRenderer;
@@ -20,6 +22,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.SkullBlock;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -80,6 +83,8 @@ public class TestMod {
 
         // Block Entities
         ModBlockEntities.register(modEventBus);
+
+        ModMenuTypes.register(modEventBus);
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
@@ -146,6 +151,11 @@ public class TestMod {
         @SubscribeEvent
         public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
             event.registerBlockEntityRenderer(ModBlockEntities.PEDESTAL_BE.get(), PedestalBlockEntityRenderer::new);
+        }
+
+        @SubscribeEvent
+        public static void registerScreens(RegisterMenuScreensEvent event) {
+            event.register(ModMenuTypes.PEDESTAL_MENU.get(), PedestalScreen::new);
         }
     }
 }
