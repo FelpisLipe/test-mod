@@ -1,0 +1,9 @@
+{
+  "type": "testmod:growth_chamber",
+  "ingredient": {
+    "item": "testmod:smiley"
+  },
+  "result": {
+    "id": "testmod:troll"
+  }
+}

@@ -2,7 +2,6 @@ package com.felpslipe.testmod;
 
 import com.felpslipe.testmod.block.ModBlocks;
 import com.felpslipe.testmod.block.client.CabelaSkullModel;
-import com.felpslipe.testmod.block.custom.CabelaSkullBlock;
 import com.felpslipe.testmod.block.entity.ModBlockEntities;
 import com.felpslipe.testmod.block.entity.renderer.PedestalBlockEntityRenderer;
 import com.felpslipe.testmod.entity.CabelaVariant;
@@ -12,6 +11,7 @@ import com.felpslipe.testmod.entity.client.ToiletRenderer;
 import com.felpslipe.testmod.hud.Hud;
 import com.felpslipe.testmod.item.ModCreativeModeTabs;
 import com.felpslipe.testmod.item.ModItems;
+import com.felpslipe.testmod.recipe.ModRecipes;
 import com.felpslipe.testmod.screen.ModMenuTypes;
 import com.felpslipe.testmod.screen.custom.GrowthChamberScreen;
 import com.felpslipe.testmod.screen.custom.PedestalScreen;
@@ -86,6 +86,8 @@ public class TestMod {
         ModBlockEntities.register(modEventBus);
 
         ModMenuTypes.register(modEventBus);
+
+        ModRecipes.register(modEventBus);
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
