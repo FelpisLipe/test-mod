@@ -17,6 +17,7 @@ public record GrowthChamberRecipe(Ingredient inputItem, ItemStack output) implem
     // inputItem & output ==> Read From JSON File!
     // GrowthChamberRecipeInput --> INVENTORY of the Block Entity
 
+
     @Override
     public NonNullList<Ingredient> getIngredients() {
         NonNullList<Ingredient> list = NonNullList.create();
@@ -25,26 +26,25 @@ public record GrowthChamberRecipe(Ingredient inputItem, ItemStack output) implem
     }
 
     @Override
-    public boolean matches(GrowthChamberRecipeInput growthChamberRecipeInput, Level level) {
-        if (level.isClientSide()) {
+    public boolean matches(GrowthChamberRecipeInput input, Level level) {
+        if(level.isClientSide()) {
             return false;
         }
-
-        return inputItem.test(growthChamberRecipeInput.getItem(0));
+        return inputItem.test(input.getItem(0));
     }
 
     @Override
-    public ItemStack assemble(GrowthChamberRecipeInput growthChamberRecipeInput, HolderLookup.Provider provider) {
+    public ItemStack assemble(GrowthChamberRecipeInput input, HolderLookup.Provider registries) {
         return output.copy();
     }
 
     @Override
-    public boolean canCraftInDimensions(int i, int i1) {
+    public boolean canCraftInDimensions(int width, int height) {
         return true;
     }
 
     @Override
-    public ItemStack getResultItem(HolderLookup.Provider provider) {
+    public ItemStack getResultItem(HolderLookup.Provider registries) {
         return output;
     }
 
@@ -64,11 +64,10 @@ public record GrowthChamberRecipe(Ingredient inputItem, ItemStack output) implem
                 ItemStack.CODEC.fieldOf("result").forGetter(GrowthChamberRecipe::output)
         ).apply(inst, GrowthChamberRecipe::new));
 
-        public static final StreamCodec<RegistryFriendlyByteBuf, GrowthChamberRecipe> STREAM_CODEC =
-                StreamCodec.composite(
-                        Ingredient.CONTENTS_STREAM_CODEC, GrowthChamberRecipe::inputItem,
-                        ItemStack.STREAM_CODEC, GrowthChamberRecipe::output,
-                        GrowthChamberRecipe::new);
+        public static final StreamCodec<RegistryFriendlyByteBuf, GrowthChamberRecipe> STREAM_CODEC = StreamCodec.composite(
+                Ingredient.CONTENTS_STREAM_CODEC, GrowthChamberRecipe::inputItem,
+                ItemStack.STREAM_CODEC, GrowthChamberRecipe::output,
+                GrowthChamberRecipe::new);
 
         @Override
         public MapCodec<GrowthChamberRecipe> codec() {
