@@ -1,6 +1,7 @@
 package com.felpslipe.testmod.screen;
 
 import com.felpslipe.testmod.TestMod;
+import com.felpslipe.testmod.screen.custom.GrowthChamberMenu;
 import com.felpslipe.testmod.screen.custom.PedestalMenu;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -15,6 +16,8 @@ public class ModMenuTypes {
     public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(Registries.MENU, TestMod.MOD_ID);
 
     public static final DeferredHolder<MenuType<?>, MenuType<PedestalMenu>> PEDESTAL_MENU = registerMenuType("pedestal_menu", PedestalMenu::new);
+
+    public static final DeferredHolder<MenuType<?>, MenuType<GrowthChamberMenu>> GROWTH_CHAMBER_MENU = registerMenuType("growth_chamber_menu", GrowthChamberMenu::new);
 
 
 

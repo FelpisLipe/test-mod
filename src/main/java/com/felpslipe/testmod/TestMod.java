@@ -13,6 +13,7 @@ import com.felpslipe.testmod.hud.Hud;
 import com.felpslipe.testmod.item.ModCreativeModeTabs;
 import com.felpslipe.testmod.item.ModItems;
 import com.felpslipe.testmod.screen.ModMenuTypes;
+import com.felpslipe.testmod.screen.custom.GrowthChamberScreen;
 import com.felpslipe.testmod.screen.custom.PedestalScreen;
 import com.felpslipe.testmod.sound.ModSounds;
 import com.google.common.collect.ImmutableMap;
@@ -156,6 +157,7 @@ public class TestMod {
         @SubscribeEvent
         public static void registerScreens(RegisterMenuScreensEvent event) {
             event.register(ModMenuTypes.PEDESTAL_MENU.get(), PedestalScreen::new);
+            event.register(ModMenuTypes.GROWTH_CHAMBER_MENU.get(), GrowthChamberScreen::new);
         }
     }
 }

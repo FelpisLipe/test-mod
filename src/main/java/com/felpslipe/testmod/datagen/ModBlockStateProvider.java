@@ -65,6 +65,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockItem(ModBlocks.STRIPPED_VIRAL_WOOD);
         saplingBlock(ModBlocks.VIRAL_SAPLING);
         leavesBlock(ModBlocks.VIRAL_LEAVES);
+        blockWithItem(ModBlocks.GROWTH_CHAMBER);
 
         for (DeferredBlock<? extends AbstractSkullBlock> skull : ModBlocks.SKULLS) {
             skullBlock(skull);

@@ -75,6 +75,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CABELA_HEAD);
                         output.accept(ModItems.CABELA_CRY_HEAD);
                         output.accept(ModBlocks.PEDESTAL);
+                        output.accept(ModBlocks.GROWTH_CHAMBER);
                     })
                     .build());
 
