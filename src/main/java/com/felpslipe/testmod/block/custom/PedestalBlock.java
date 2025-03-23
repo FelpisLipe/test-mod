@@ -4,7 +4,6 @@ import com.felpslipe.testmod.block.entity.PedestalBlockEntity;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -52,13 +51,13 @@ public class PedestalBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new PedestalBlockEntity(pos,state);
+        return new PedestalBlockEntity(pos, state);
     }
 
     @Override
     protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
-        if(state.getBlock() != newState.getBlock()) {
-            if(level.getBlockEntity(pos) instanceof PedestalBlockEntity pedestalBlockEntity) {
+        if (state.getBlock() != newState.getBlock()) {
+            if (level.getBlockEntity(pos) instanceof PedestalBlockEntity pedestalBlockEntity) {
                 pedestalBlockEntity.drops();
                 level.updateNeighbourForOutputSignal(pos, this);
             }
@@ -68,23 +67,27 @@ public class PedestalBlock extends BaseEntityBlock {
 
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if(level.getBlockEntity(pos) instanceof PedestalBlockEntity pedestalBlockEntity) {
-            if(player.isCrouching() && !level.isClientSide()) {
-                ((ServerPlayer) player).openMenu(new SimpleMenuProvider(pedestalBlockEntity, Component.literal("Pedestal")), pos);
+        if (level.getBlockEntity(pos) instanceof PedestalBlockEntity pedestalBlockEntity) {
+            if (player.isCrouching()) {
+                if (!level.isClientSide()) {
+                    player.openMenu(new SimpleMenuProvider(pedestalBlockEntity, Component.literal("Pedestal")), pos);
+                }
                 return ItemInteractionResult.SUCCESS;
             }
 
-            if(pedestalBlockEntity.inventory.getStackInSlot(0).isEmpty() && !stack.isEmpty()) {
+            if (pedestalBlockEntity.inventory.getStackInSlot(0).isEmpty() && !stack.isEmpty()) {
                 pedestalBlockEntity.inventory.insertItem(0, stack.copy(), false);
                 stack.shrink(1);
-                level.playSound(player,pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1f, 2f);
-            }
-            else if(stack.isEmpty()) {
-                ItemStack stackOnPedestal = pedestalBlockEntity.inventory.extractItem(0,1,false);
-                player.setItemInHand(InteractionHand.MAIN_HAND, stackOnPedestal);
-                pedestalBlockEntity.clearContents();
-                level.playSound(player,pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1f, 1f);
+                level.playSound(player, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1f, 2f);
 
+            } else if (stack.isEmpty()) {
+                ItemStack stackOnPedestal = pedestalBlockEntity.inventory.extractItem(0, 1, false);
+
+                if (!stackOnPedestal.isEmpty()) {
+                    player.setItemInHand(InteractionHand.MAIN_HAND, stackOnPedestal);
+                    pedestalBlockEntity.clearContents();
+                    level.playSound(player, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1f, 1f);
+                }
             }
         }
 
