@@ -2,6 +2,7 @@ package com.felpslipe.testmod.item;
 
 import com.felpslipe.testmod.TestMod;
 import com.felpslipe.testmod.block.ModBlocks;
+import com.felpslipe.testmod.fluid.ModFluids;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -38,6 +39,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SMILEY_BOOTS);
                         output.accept(ModItems.FRANGO_SEEDS);
                         output.accept(ModItems.CABELA_SPAWN_EGG);
+                        output.accept(ModFluids.BLACK_OPAL_WATER_BUCKET);
                     })
                     .build());
 

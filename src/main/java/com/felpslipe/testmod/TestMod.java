@@ -8,6 +8,9 @@ import com.felpslipe.testmod.entity.CabelaVariant;
 import com.felpslipe.testmod.entity.ModEntities;
 import com.felpslipe.testmod.entity.client.CabelaRenderer;
 import com.felpslipe.testmod.entity.client.ToiletRenderer;
+import com.felpslipe.testmod.fluid.BaseFluidType;
+import com.felpslipe.testmod.fluid.ModFluidTypes;
+import com.felpslipe.testmod.fluid.ModFluids;
 import com.felpslipe.testmod.hud.Hud;
 import com.felpslipe.testmod.item.ModCreativeModeTabs;
 import com.felpslipe.testmod.item.ModItems;
@@ -17,6 +20,8 @@ import com.felpslipe.testmod.screen.custom.GrowthChamberScreen;
 import com.felpslipe.testmod.screen.custom.PedestalScreen;
 import com.felpslipe.testmod.sound.ModSounds;
 import com.google.common.collect.ImmutableMap;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.SkullBlockRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.resources.ResourceLocation;
@@ -24,6 +29,7 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.SkullBlock;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
+import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -89,6 +95,9 @@ public class TestMod {
 
         ModRecipes.register(modEventBus);
 
+        ModFluids.register(modEventBus);
+        ModFluidTypes.register(modEventBus);
+
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
@@ -127,7 +136,8 @@ public class TestMod {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            EntityRenderers.register(ModEntities.CABELA.get(), CabelaRenderer::new);            EntityRenderers.register(ModEntities.TOILET_ENTITY.get(), ToiletRenderer::new);
+            EntityRenderers.register(ModEntities.CABELA.get(), CabelaRenderer::new);
+            EntityRenderers.register(ModEntities.TOILET_ENTITY.get(), ToiletRenderer::new);
 
 
             event.enqueueWork(() -> {
@@ -136,8 +146,10 @@ public class TestMod {
                 builder.put(CabelaVariant.CRY, CabelaVariant.CRY.getResourceLocation());
                 SkullBlockRenderer.SKIN_BY_TYPE.putAll(builder.build());
             });
-            EntityRenderers.register(ModEntities.TOILET_ENTITY.get(), ToiletRenderer::new);
-
+            event.enqueueWork(() -> {
+                ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_BLACK_OPAL_WATER.get(), RenderType.translucent());
+                ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_BLACK_OPAL_WATER.get(), RenderType.translucent());
+            });
         }
 
         @SubscribeEvent
@@ -160,6 +172,12 @@ public class TestMod {
         public static void registerScreens(RegisterMenuScreensEvent event) {
             event.register(ModMenuTypes.PEDESTAL_MENU.get(), PedestalScreen::new);
             event.register(ModMenuTypes.GROWTH_CHAMBER_MENU.get(), GrowthChamberScreen::new);
+        }
+
+        @SubscribeEvent
+        public static void onClientExtensions(RegisterClientExtensionsEvent event) {
+            event.registerFluidType(((BaseFluidType) ModFluidTypes.BLACK_OPAL_WATER_FLUID_TYPE.get()).getClientFluidTypeExtensions(),
+                    ModFluidTypes.BLACK_OPAL_WATER_FLUID_TYPE.get());
         }
     }
 }

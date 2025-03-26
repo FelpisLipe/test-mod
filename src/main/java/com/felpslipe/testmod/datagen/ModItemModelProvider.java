@@ -2,6 +2,7 @@ package com.felpslipe.testmod.datagen;
 
 import com.felpslipe.testmod.TestMod;
 import com.felpslipe.testmod.block.ModBlocks;
+import com.felpslipe.testmod.fluid.ModFluids;
 import com.felpslipe.testmod.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
@@ -63,6 +64,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimmedArmorItem(ModItems.SMILEY_LEGGINGS);
         trimmedArmorItem(ModItems.SMILEY_BOOTS);
 
+        basicItem(ModFluids.BLACK_OPAL_WATER_BUCKET.get());
         basicItem(ModItems.FRANGO_SEEDS.get());
         saplingItem(ModBlocks.VIRAL_SAPLING);
         withExistingParent(ModItems.CABELA_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
