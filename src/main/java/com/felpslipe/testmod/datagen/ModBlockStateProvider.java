@@ -66,6 +66,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         saplingBlock(ModBlocks.VIRAL_SAPLING);
         leavesBlock(ModBlocks.VIRAL_LEAVES);
         blockWithItem(ModBlocks.GROWTH_CHAMBER);
+        blockWithItem(ModBlocks.COAL_GENERATOR);
 
         for (DeferredBlock<? extends AbstractSkullBlock> skull : ModBlocks.SKULLS) {
             skullBlock(skull);

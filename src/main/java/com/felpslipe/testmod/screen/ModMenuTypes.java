@@ -1,6 +1,7 @@
 package com.felpslipe.testmod.screen;
 
 import com.felpslipe.testmod.TestMod;
+import com.felpslipe.testmod.screen.custom.CoalGeneratorMenu;
 import com.felpslipe.testmod.screen.custom.GrowthChamberMenu;
 import com.felpslipe.testmod.screen.custom.PedestalMenu;
 import net.minecraft.core.registries.Registries;
@@ -18,6 +19,8 @@ public class ModMenuTypes {
     public static final DeferredHolder<MenuType<?>, MenuType<PedestalMenu>> PEDESTAL_MENU = registerMenuType("pedestal_menu", PedestalMenu::new);
 
     public static final DeferredHolder<MenuType<?>, MenuType<GrowthChamberMenu>> GROWTH_CHAMBER_MENU = registerMenuType("growth_chamber_menu", GrowthChamberMenu::new);
+
+    public static final DeferredHolder<MenuType<?>, MenuType<CoalGeneratorMenu>> COAL_GENERATOR_MENU = registerMenuType("coal_generator_menu", CoalGeneratorMenu::new);
 
 
 

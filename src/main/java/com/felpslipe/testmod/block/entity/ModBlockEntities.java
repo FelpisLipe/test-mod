@@ -18,6 +18,10 @@ public class ModBlockEntities {
     public static final Supplier<BlockEntityType<GrowthChamberBlockEntity>> GROWTH_CHAMBER_BE = BLOCK_ENTITIES.register("growth_chamber_be",
             () -> BlockEntityType.Builder.of(GrowthChamberBlockEntity::new, ModBlocks.GROWTH_CHAMBER.get()).build(null));
 
+    public static final Supplier<BlockEntityType<CoalGeneratorBlockEntity>> COAL_GENERATOR_BE =
+            BLOCK_ENTITIES.register("coal_generator_be", () -> BlockEntityType.Builder.of(
+                    CoalGeneratorBlockEntity::new, ModBlocks.COAL_GENERATOR.get()).build(null));
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }
