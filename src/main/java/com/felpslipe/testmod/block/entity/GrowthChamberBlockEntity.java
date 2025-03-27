@@ -1,5 +1,6 @@
 package com.felpslipe.testmod.block.entity;
 
+import com.felpslipe.testmod.block.custom.GrowthChamberBlock;
 import com.felpslipe.testmod.item.ModItems;
 import com.felpslipe.testmod.recipe.GrowthChamberRecipe;
 import com.felpslipe.testmod.recipe.GrowthChamberRecipeInput;
@@ -123,6 +124,7 @@ public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvide
     public void tick(Level level, BlockPos blockPos, BlockState blockState) {
         if(hasRecipe()) {
             increaseCraftingProgress();
+            level.setBlockAndUpdate(blockPos, blockState.setValue(GrowthChamberBlock.LIT, true));
             setChanged(level, blockPos, blockState);
 
             if(hasCraftingFinished()) {
@@ -132,6 +134,7 @@ public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvide
         }
         else {
             resetProgress();
+            level.setBlockAndUpdate(blockPos, blockState.setValue(GrowthChamberBlock.LIT, false));
         }
     }
 
