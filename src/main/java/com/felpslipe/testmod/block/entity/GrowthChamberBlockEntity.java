@@ -1,6 +1,7 @@
 package com.felpslipe.testmod.block.entity;
 
 import com.felpslipe.testmod.block.custom.GrowthChamberBlock;
+import com.felpslipe.testmod.block.entity.energy.ModEnergyStorage;
 import com.felpslipe.testmod.item.ModItems;
 import com.felpslipe.testmod.recipe.GrowthChamberRecipe;
 import com.felpslipe.testmod.recipe.GrowthChamberRecipeInput;
@@ -52,6 +53,19 @@ public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvide
     private int progress = 0;
     private int maxProgress = 72;
 
+    private static final int ENERGY_CRAFT_AMOUNT = 25; // amount of energy per tick to craft
+
+    private final ModEnergyStorage ENERGY_STORAGE = createEnergyStorage();
+    private ModEnergyStorage createEnergyStorage() {
+        return new ModEnergyStorage(64000, 320) {
+            @Override
+            public void onEnergyChanged() {
+                setChanged();
+                getLevel().sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+            }
+        };
+    }
+
     public GrowthChamberBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModBlockEntities.GROWTH_CHAMBER_BE.get(), pos, blockState);
         data = new ContainerData() {
@@ -77,6 +91,10 @@ public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvide
                 return 2;
             }
         };
+    }
+
+    public IEnergyStorage getEnergyStorage(@Nullable Direction direction) {
+        return this.ENERGY_STORAGE;
     }
 
     public IItemHandler getItemHandler(Direction direction) {
@@ -107,6 +125,7 @@ public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvide
         tag.put("inventory", itemHandler.serializeNBT(registries));
         tag.putInt("growth_chamber.progress", progress);
         tag.putInt("growth_chamber.max_progress", maxProgress);
+        tag.putInt("growth_chamber.energy", ENERGY_STORAGE.getEnergyStored());
 
 
         super.saveAdditional(tag, registries);
@@ -119,11 +138,13 @@ public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvide
         itemHandler.deserializeNBT(registries, tag.getCompound("inventory"));
         progress = tag.getInt("growth_chamber.progress");
         maxProgress = tag.getInt("growth_chamber.max_progress");
+        ENERGY_STORAGE.setEnergy(tag.getInt("growth_chamber.energy"));
     }
 
     public void tick(Level level, BlockPos blockPos, BlockState blockState) {
         if(hasRecipe()) {
             increaseCraftingProgress();
+            useEnergyForCrafting();
             level.setBlockAndUpdate(blockPos, blockState.setValue(GrowthChamberBlock.LIT, true));
             setChanged(level, blockPos, blockState);
 
@@ -136,6 +157,10 @@ public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvide
             resetProgress();
             level.setBlockAndUpdate(blockPos, blockState.setValue(GrowthChamberBlock.LIT, false));
         }
+    }
+
+    private void useEnergyForCrafting() {
+        this.ENERGY_STORAGE.extractEnergy(ENERGY_CRAFT_AMOUNT, false);
     }
 
     private void craftItem() {
@@ -167,8 +192,10 @@ public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvide
         }
 
         ItemStack output = recipe.get().value().output();
-        return canInsertAmountIntoOutputSlot(output.getCount()) && canInsertItemIntoOutputSlot(output);
+        return canInsertAmountIntoOutputSlot(output.getCount()) && canInsertItemIntoOutputSlot(output) && hasEnoughEnergyToCraft();
     }
+
+
 
     private Optional<RecipeHolder<GrowthChamberRecipe>> getCurrentRecipe() {
         return this.level.getRecipeManager()
@@ -186,6 +213,10 @@ public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvide
 
         return maxCount >= currentCount + count;
     }
+    private boolean hasEnoughEnergyToCraft() {
+        return this.ENERGY_STORAGE.getEnergyStored() >= ENERGY_CRAFT_AMOUNT * maxProgress;
+    }
+
 
 
     @Override
