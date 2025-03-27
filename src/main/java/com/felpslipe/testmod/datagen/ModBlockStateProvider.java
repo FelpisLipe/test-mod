@@ -65,7 +65,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockItem(ModBlocks.STRIPPED_VIRAL_WOOD);
         saplingBlock(ModBlocks.VIRAL_SAPLING);
         leavesBlock(ModBlocks.VIRAL_LEAVES);
-        blockWithItem(ModBlocks.GROWTH_CHAMBER);
+        horizontalBlock(ModBlocks.GROWTH_CHAMBER.get(), models().orientable("testmod:growth_chamber",
+                mcLoc("block/blast_furnace_side"),
+                modLoc("block/growth_chamber_front"),
+                mcLoc("block/blast_furnace_top")));
+        blockItem(ModBlocks.GROWTH_CHAMBER);
         blockWithItem(ModBlocks.COAL_GENERATOR);
 
         for (DeferredBlock<? extends AbstractSkullBlock> skull : ModBlocks.SKULLS) {

@@ -6,6 +6,7 @@ import com.felpslipe.testmod.recipe.GrowthChamberRecipeInput;
 import com.felpslipe.testmod.recipe.ModRecipes;
 import com.felpslipe.testmod.screen.custom.GrowthChamberMenu;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -26,6 +27,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.energy.IEnergyStorage;
+import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
@@ -74,6 +76,10 @@ public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvide
                 return 2;
             }
         };
+    }
+
+    public IItemHandler getItemHandler(Direction direction) {
+        return this.itemHandler;
     }
 
     @Override

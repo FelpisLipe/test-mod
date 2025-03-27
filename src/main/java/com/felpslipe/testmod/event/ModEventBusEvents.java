@@ -2,6 +2,7 @@ package com.felpslipe.testmod.event;
 
 import com.felpslipe.testmod.TestMod;
 import com.felpslipe.testmod.block.entity.CoalGeneratorBlockEntity;
+import com.felpslipe.testmod.block.entity.GrowthChamberBlockEntity;
 import com.felpslipe.testmod.block.entity.ModBlockEntities;
 import com.felpslipe.testmod.entity.ModEntities;
 import com.felpslipe.testmod.entity.client.CabelaModel;
@@ -29,5 +30,6 @@ public class ModEventBusEvents {
     @SubscribeEvent
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ModBlockEntities.COAL_GENERATOR_BE.get(), CoalGeneratorBlockEntity::getEnergyStorage);
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntities.GROWTH_CHAMBER_BE.get(), GrowthChamberBlockEntity::getItemHandler);
     }
 }
