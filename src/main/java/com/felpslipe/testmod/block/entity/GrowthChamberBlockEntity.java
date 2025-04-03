@@ -1,8 +1,8 @@
 package com.felpslipe.testmod.block.entity;
 
 import com.felpslipe.testmod.block.custom.GrowthChamberBlock;
+import com.felpslipe.testmod.block.entity.energy.ModBlockEntityEnergyStorage;
 import com.felpslipe.testmod.block.entity.energy.ModEnergyStorage;
-import com.felpslipe.testmod.item.ModItems;
 import com.felpslipe.testmod.recipe.GrowthChamberRecipe;
 import com.felpslipe.testmod.recipe.GrowthChamberRecipeInput;
 import com.felpslipe.testmod.recipe.ModRecipes;
@@ -26,7 +26,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 import net.neoforged.neoforge.items.IItemHandler;
@@ -55,16 +54,7 @@ public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvide
 
     private static final int ENERGY_CRAFT_AMOUNT = 25; // amount of energy per tick to craft
 
-    private final ModEnergyStorage ENERGY_STORAGE = createEnergyStorage();
-    private ModEnergyStorage createEnergyStorage() {
-        return new ModEnergyStorage(64000, 320) {
-            @Override
-            public void onEnergyChanged() {
-                setChanged();
-                getLevel().sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
-            }
-        };
-    }
+    private final ModEnergyStorage ENERGY_STORAGE = new ModBlockEntityEnergyStorage(this, 64000, 320, 0);
 
     public GrowthChamberBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModBlockEntities.GROWTH_CHAMBER_BE.get(), pos, blockState);
@@ -160,7 +150,7 @@ public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvide
     }
 
     private void useEnergyForCrafting() {
-        this.ENERGY_STORAGE.extractEnergy(ENERGY_CRAFT_AMOUNT, false);
+        this.ENERGY_STORAGE.extractEnergyInternal(ENERGY_CRAFT_AMOUNT, false);
     }
 
     private void craftItem() {
@@ -195,13 +185,10 @@ public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvide
         return canInsertAmountIntoOutputSlot(output.getCount()) && canInsertItemIntoOutputSlot(output) && hasEnoughEnergyToCraft();
     }
 
-
-
     private Optional<RecipeHolder<GrowthChamberRecipe>> getCurrentRecipe() {
         return this.level.getRecipeManager()
                 .getRecipeFor(ModRecipes.GROWTH_CHAMBER_TYPE.get(), new GrowthChamberRecipeInput(itemHandler.getStackInSlot(INPUT_SLOT)), level);
     }
-
 
     private boolean canInsertItemIntoOutputSlot(ItemStack output) {
         return itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() || itemHandler.getStackInSlot(OUTPUT_SLOT).getItem() == output.getItem();
@@ -217,8 +204,6 @@ public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvide
         return this.ENERGY_STORAGE.getEnergyStored() >= ENERGY_CRAFT_AMOUNT * maxProgress;
     }
 
-
-
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
         return saveWithoutMetadata(registries);
@@ -228,6 +213,4 @@ public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvide
     public @Nullable Packet<ClientGamePacketListener> getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
     }
-
-
 }
