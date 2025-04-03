@@ -12,6 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 
+import java.util.List;
 import java.util.Optional;
 
 public class CoalGeneratorScreen extends AbstractContainerScreen<CoalGeneratorMenu> {
@@ -25,9 +26,6 @@ public class CoalGeneratorScreen extends AbstractContainerScreen<CoalGeneratorMe
     @Override
     protected void init() {
         super.init();
-        // Gets rid of title and inventory title
-        this.inventoryLabelY = 10000;
-        this.titleLabelY = 10000;
         assignEnergyInfoArea();
     }
 
@@ -39,16 +37,14 @@ public class CoalGeneratorScreen extends AbstractContainerScreen<CoalGeneratorMe
     }
 
     private void assignEnergyInfoArea() {
-        energyInfoArea = new EnergyDisplayTooltipArea(((width - imageWidth) / 2) + 156,
-                ((height - imageHeight) / 2) + 11, menu.blockEntity.getEnergyStorage(null));
+        energyInfoArea = new EnergyDisplayTooltipArea(leftPos + 156,
+                topPos + 11, menu.blockEntity.getEnergyStorage(null));
     }
 
     @Override
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-        int x = (width - imageWidth) / 2;
-        int y = (height - imageHeight) / 2;
-
-        renderEnergyAreaTooltip(guiGraphics, mouseX, mouseY, x, y);
+        super.renderLabels(guiGraphics, mouseX, mouseY);
+        renderEnergyAreaTooltip(guiGraphics, mouseX, mouseY, leftPos, topPos);
     }
 
     @Override
@@ -56,8 +52,8 @@ public class CoalGeneratorScreen extends AbstractContainerScreen<CoalGeneratorMe
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, GUI_TEXTURE);
-        int x = (width - imageWidth) / 2;
-        int y = (height - imageHeight) / 2;
+        int x = leftPos;
+        int y = topPos;
 
         guiGraphics.blit(GUI_TEXTURE, x, y, 0, 0, imageWidth, imageHeight);
 

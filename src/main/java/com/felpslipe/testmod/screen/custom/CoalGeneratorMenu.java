@@ -7,23 +7,18 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.SimpleContainerData;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.items.SlotItemHandler;
-import net.neoforged.neoforge.registries.DeferredBlock;
-import org.jetbrains.annotations.Nullable;
 
 public class CoalGeneratorMenu extends ModBlockEntityMenu<CoalGeneratorBlockEntity> {
     private final ContainerData data;
 
     public CoalGeneratorMenu(int containerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(containerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
+        this(containerId, inv, (CoalGeneratorBlockEntity) inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
     }
 
-    public CoalGeneratorMenu(int containerId, Inventory inv, BlockEntity entity, ContainerData data) {
-        super(ModMenuTypes.COAL_GENERATOR_MENU.get(), containerId, inv, (CoalGeneratorBlockEntity) entity, ModBlocks.COAL_GENERATOR);
+    public CoalGeneratorMenu(int containerId, Inventory inv, CoalGeneratorBlockEntity entity, ContainerData data) {
+        super(ModMenuTypes.COAL_GENERATOR_MENU.get(), containerId, inv, entity, ModBlocks.COAL_GENERATOR);
         this.data = data;
 
         this.addSlot(new SlotItemHandler(this.blockEntity.itemHandler, 0, 80, 35));
@@ -31,16 +26,24 @@ public class CoalGeneratorMenu extends ModBlockEntityMenu<CoalGeneratorBlockEnti
         addDataSlots(data);
     }
 
+    public int getBurnProgress() {
+        return data.get(0);
+    }
+
+    public int getMaxBurnProgress() {
+        return data.get(1);
+    }
+
     public boolean isBurning() {
-        return data.get(0) < 160;
+        return getBurnProgress() > 0;
     }
 
     public float getFuelProgress() {
-        int i = this.data.get(1);
-        if(i == 0) {
-            i = 160;
+        int i = getMaxBurnProgress();
+        if (i == 0) {
+            return 0;
         }
 
-        return Mth.clamp((float)this.data.get(0) / (float)i, 0.0f, 1.0f);
+        return Mth.clamp((float) getBurnProgress() / (float) i, 0.0f, 1.0f);
     }
 }

@@ -7,18 +7,17 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.SimpleContainerData;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.items.SlotItemHandler;
 
 public class GrowthChamberMenu extends ModBlockEntityMenu<GrowthChamberBlockEntity> {
     private final ContainerData data;
 
     public GrowthChamberMenu(int containerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(containerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
+        this(containerId, inv, (GrowthChamberBlockEntity) inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
     }
 
-    public GrowthChamberMenu(int containerId, Inventory inv, BlockEntity entity, ContainerData data) {
-        super(ModMenuTypes.GROWTH_CHAMBER_MENU.get(), containerId, inv, (GrowthChamberBlockEntity) entity, ModBlocks.GROWTH_CHAMBER);
+    public GrowthChamberMenu(int containerId, Inventory inv, GrowthChamberBlockEntity entity, ContainerData data) {
+        super(ModMenuTypes.GROWTH_CHAMBER_MENU.get(), containerId, inv, entity, ModBlocks.GROWTH_CHAMBER);
         this.data = data;
 
         this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 0, 54, 34));

@@ -26,8 +26,6 @@ public class GrowthChamberScreen extends AbstractContainerScreen<GrowthChamberMe
     @Override
     protected void init() {
         super.init();
-        this.titleLabelY = 6;
-        this.inventoryLabelY = this.imageHeight - 94;
         assignEnergyInfoArea();
     }
 
@@ -45,10 +43,8 @@ public class GrowthChamberScreen extends AbstractContainerScreen<GrowthChamberMe
 
     @Override
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-        int x = (width - imageWidth) / 2;
-        int y = (height - imageHeight) / 2;
-
-        renderEnergyAreaTooltip(guiGraphics, mouseX, mouseY, x, y);
+        super.renderLabels(guiGraphics, mouseX, mouseY);
+        renderEnergyAreaTooltip(guiGraphics, mouseX, mouseY, leftPos, topPos);
     }
 
     @Override
