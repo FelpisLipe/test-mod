@@ -200,6 +200,8 @@ public class ModBlocks {
             () -> new GrowthChamberBlock(BlockBehaviour.Properties.of()));
     public static final DeferredBlock<Block> COAL_GENERATOR = registerBlock("coal_generator",
             () -> new CoalGeneratorBlock(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> TEST = registerBlock("test",
+            () -> new TestBlock(BlockBehaviour.Properties.of().noOcclusion()));
 
 
 

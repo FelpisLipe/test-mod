@@ -74,6 +74,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.VIRAL_SAPLING);
                         output.accept(ModBlocks.VIRAL_LEAVES);
                         output.accept(ModBlocks.TOILET);
+                        output.accept(ModBlocks.TEST);
                         output.accept(ModItems.CABELA_HEAD);
                         output.accept(ModItems.CABELA_CRY_HEAD);
                         output.accept(ModBlocks.PEDESTAL);
