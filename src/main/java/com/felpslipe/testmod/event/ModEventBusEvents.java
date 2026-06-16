@@ -1,6 +1,7 @@
 package com.felpslipe.testmod.event;
 
 import com.felpslipe.testmod.TestMod;
+import com.felpslipe.testmod.block.entity.CableBlockEntity;
 import com.felpslipe.testmod.block.entity.CoalGeneratorBlockEntity;
 import com.felpslipe.testmod.block.entity.GrowthChamberBlockEntity;
 import com.felpslipe.testmod.block.entity.ModBlockEntities;
@@ -33,6 +34,7 @@ public class ModEventBusEvents {
 
         event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ModBlockEntities.COAL_GENERATOR_BE.get(), CoalGeneratorBlockEntity::getEnergyStorage);
         event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ModBlockEntities.GROWTH_CHAMBER_BE.get(), GrowthChamberBlockEntity::getEnergyStorage);
+        event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, ModBlockEntities.CABLE_BE.get(), CableBlockEntity::getEnergyStorage);
 
     }
 }

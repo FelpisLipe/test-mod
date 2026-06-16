@@ -26,12 +26,14 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Supplier;
 
+@ParametersAreNonnullByDefault
 public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(TestMod.MOD_ID);
     public static final List<DeferredBlock<? extends AbstractSkullBlock>> SKULLS = new ArrayList<>();
@@ -200,6 +202,9 @@ public class ModBlocks {
             () -> new GrowthChamberBlock(BlockBehaviour.Properties.of()));
     public static final DeferredBlock<Block> COAL_GENERATOR = registerBlock("coal_generator",
             () -> new CoalGeneratorBlock(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> CABLE = registerBlock("cable",
+            () -> new CableBlock(BlockBehaviour.Properties.of().noOcclusion().pushReaction(PushReaction.DESTROY)));
+
     public static final DeferredBlock<Block> TEST = registerBlock("test",
             () -> new TestBlock(BlockBehaviour.Properties.of().noOcclusion()));
 

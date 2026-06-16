@@ -143,8 +143,9 @@ public class TestMod {
 
             event.enqueueWork(() -> {
                 ImmutableMap.Builder<SkullBlock.Type, ResourceLocation> builder = ImmutableMap.builder();
-                builder.put(CabelaVariant.NORMAL, CabelaVariant.NORMAL.getResourceLocation());
-                builder.put(CabelaVariant.CRY, CabelaVariant.CRY.getResourceLocation());
+                for (CabelaVariant variant : CabelaVariant.values()) {
+                    builder.put(variant, variant.getResourceLocation());
+                }
                 SkullBlockRenderer.SKIN_BY_TYPE.putAll(builder.build());
             });
             event.enqueueWork(() -> {

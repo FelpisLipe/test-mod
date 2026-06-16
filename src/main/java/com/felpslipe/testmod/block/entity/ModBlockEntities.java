@@ -22,6 +22,10 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register("coal_generator_be", () -> BlockEntityType.Builder.of(
                     CoalGeneratorBlockEntity::new, ModBlocks.COAL_GENERATOR.get()).build(null));
 
+    public static final Supplier<BlockEntityType<CableBlockEntity>> CABLE_BE =
+            BLOCK_ENTITIES.register("cable_be", () -> BlockEntityType.Builder.of(
+                    CableBlockEntity::new, ModBlocks.CABLE.get()).build(null));
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }

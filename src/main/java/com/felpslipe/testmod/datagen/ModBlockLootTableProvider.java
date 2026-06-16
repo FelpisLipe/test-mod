@@ -3,6 +3,7 @@ package com.felpslipe.testmod.datagen;
 import com.felpslipe.testmod.block.ModBlocks;
 import com.felpslipe.testmod.block.custom.FrangoCropBlock;
 import com.felpslipe.testmod.item.ModItems;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
@@ -23,6 +24,7 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 import java.util.Set;
 
+@MethodsReturnNonnullByDefault
 public class ModBlockLootTableProvider extends BlockLootSubProvider {
     protected ModBlockLootTableProvider(HolderLookup.Provider registries) {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags(), registries);
@@ -76,6 +78,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.PEDESTAL.get());
         dropSelf(ModBlocks.GROWTH_CHAMBER.get());
         dropSelf(ModBlocks.COAL_GENERATOR.get());
+        dropSelf(ModBlocks.CABLE.get());
     }
 
     protected LootTable.Builder createMultipleOreDrops(Block pBlock, Item item, float minDrops, float maxDrops) {

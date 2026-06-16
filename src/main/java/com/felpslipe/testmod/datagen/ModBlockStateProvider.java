@@ -71,6 +71,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 mcLoc("block/blast_furnace_top"))); */
         blockItem(ModBlocks.GROWTH_CHAMBER);
         blockWithItem(ModBlocks.COAL_GENERATOR);
+        blockItem(ModBlocks.CABLE);
 
         for (DeferredBlock<? extends AbstractSkullBlock> skull : ModBlocks.SKULLS) {
             skullBlock(skull);
