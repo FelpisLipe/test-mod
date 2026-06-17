@@ -13,6 +13,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
+@SuppressWarnings("unused")
 public class ModCreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TAB = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, TestMod.MOD_ID);
 
@@ -80,6 +81,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.PEDESTAL);
                         output.accept(ModBlocks.GROWTH_CHAMBER);
                         output.accept(ModBlocks.COAL_GENERATOR);
+                        output.accept(ModBlocks.CABLE);
                     })
                     .build());
 

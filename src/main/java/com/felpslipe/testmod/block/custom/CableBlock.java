@@ -49,7 +49,7 @@ public class CableBlock extends BaseEntityBlock {
     protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
         if (state.getBlock() != newState.getBlock()) {
             if (level.getBlockEntity(pos) instanceof CableBlockEntity cableBlockEntity) {
-                cableBlockEntity.onRemove(pos);
+                cableBlockEntity.onRemove();
                 level.updateNeighbourForOutputSignal(pos, this);
             }
         }
